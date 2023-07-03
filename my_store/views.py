@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import View
-from django.contrib.auth.views import PasswordChangeView, PasswordChangeDoneView
+from django.contrib.auth.views import PasswordChangeView, PasswordChangeDoneView, LoginView, LogoutView
 import re
 from django.views.generic import FormView, UpdateView, DeleteView, CreateView
 from django.urls import reverse_lazy
@@ -21,5 +21,11 @@ class UserCreateView(CreateView):
     model = User
 
 class SubmittablePasswordChangeView(PasswordChangeView):
-    template_name = "change_password.html"
+    template_name = "password_change.html"
     success_url = reverse_lazy("password_change_done")
+
+class SubmittablePasswordChangeDoneView(PasswordChangeDoneView):
+    template_name = "password_change_done.html"
+
+class SubmittableLogoutView(LogoutView):
+    template_name = "logout.html"

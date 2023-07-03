@@ -19,7 +19,7 @@ class Customers(models.Model):
     # last_visited = models.DateTimeField(auto_now=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
     def __str__(self):
-        return f"Klient: {User.first_name, User.last_name}"
+        return f"Klient: {self.user}"
 
 class Categories(models.Model):
     name = models.CharField(max_length=45)
