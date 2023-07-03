@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import View
-from django.contrib.auth.views import PasswordChangeView, PasswordChangeDoneView, LoginView, LogoutView
+from django.contrib.auth.views import PasswordChangeView, PasswordChangeDoneView, LogoutView
 import re
 from django.views.generic import FormView, UpdateView, DeleteView, CreateView
 from django.urls import reverse_lazy
