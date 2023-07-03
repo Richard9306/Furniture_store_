@@ -16,7 +16,7 @@ class HelloView(View):
 
 class UserCreateView(CreateView):
     template_name = "registration.html"
-    form_class = forms.CustomerForm
+    form_class = forms.UserSignUpForm
     success_url = reverse_lazy("hello")
     model = User
 
