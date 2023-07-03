@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>ID usera</th>
+        <th>Imię</th>
+        <th>Nazwisko</th>
+        <th>Email</th>
+        <th>Telefon</th>
+        <th>Data urodzenia</th>
+        <th>Kraj</th>
+        <th>Miejscowość</th>
+        <th>Kod pocztowy</th>
+        <th>Ulica</th>
+        <th>Nr domu</th>
+        <th>Nr mieszkania</th>
+        <th>Modyfikuj</th>
+    </tr>
+{% for c in customers %}
+    <tr>
+        <td>{{ c.id }}</td>
+        <td>{{ c.user.id }}</td>
+        <td>{{ c.user.first_name }}</td>
+        <td>{{ c.user.last_name }}</td>
+        <td>{{ c.user.email }}</td>
+        <td>{{ c.phone_nr }}</td>
+        <td>{{ c.birth_date }}</td>
+        <td>{{ c.country }}</td>
+        <td>{{ c.city }}</td>
+        <td>{{ c.postal_code }}</td>
+        <td>{{ c.street }}</td>
+        <td>{{ c.house_nr }}</td>
+        <td>{{ c.flat_nr }}</td>
+        <td><a class="btn btn-primary" href="{% url 'customer_update' pk=c.id %}">Edytuj</a></td>
+        <td><a class="btn btn-primary" href="{% url 'customer_delete' pk=c.id %}">Usuń</a></td>
+
+    </tr>
+{% endfor %}
+
+</table>
+{% endblock %}

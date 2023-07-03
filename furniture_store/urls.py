@@ -28,5 +28,8 @@ urlpatterns = [
     path("accounts/password_change", views.SubmittablePasswordChangeView.as_view(), name="password_change"),
     path("accounts/password_change_done", views.SubmittablePasswordChangeDoneView.as_view(), name="password_change_done"),
     path("hello", views.HelloView.as_view(), name="hello"),
-
+    path("customers/read", views.CustomerRead.as_view(), name="customers_read"),
+    path("customers/create", views.CustomerCreateView.as_view(), name="customer_create"),
+    path("customers/update/<pk>", views.CustomerUpdateView.as_view(), name="customer_update"),
+    path("customers/delete/<pk>", views.CustomerDeleteView.as_view(), name="customer_delete")
 ]

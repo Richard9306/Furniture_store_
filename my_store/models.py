@@ -4,19 +4,14 @@ from django.utils import timezone
 # Create your models here.
 class Customers(models.Model):
 
-    # first_name = models.CharField(max_length=30)
-    # last_name = models.CharField(max_length=60)
     birth_date = models.DateField()
-    phone_nr = models.CharField(max_length=9)
-    # email = models.EmailField()
+    phone_nr = models.CharField(max_length=15)
     country = models.CharField(max_length=60, default="Polska")
     city = models.CharField(max_length=45)
-    postal_code = models.CharField(max_length=5)
+    postal_code = models.CharField(max_length=6)
     street = models.CharField(max_length=75)
     house_nr = models.CharField(max_length=10)
     flat_nr = models.IntegerField()
-    # date_created = models.DateTimeField(auto_now_add=True)
-    # last_visited = models.DateTimeField(auto_now=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
     def __str__(self):
         return f"Klient: {self.user}"
