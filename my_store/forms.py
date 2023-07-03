@@ -7,7 +7,9 @@ class UserSignUpForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ("first_name", "last_name", "email")
-        # first_name = forms.CharField(max_length=30)
-        # last_name = forms.CharField(max_length=60)
-        # email = forms.EmailField()
+        fields = ("username", "first_name", "last_name", "email")
+
+class CustomerForm(forms.ModelForm):
+    class Meta:
+        model = models.Customers
+        fields = "__all__"

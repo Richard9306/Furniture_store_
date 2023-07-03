@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Usuń kupującego: {{ object.id }}</h1>
+<form method="post">
+  {% csrf_token %}
+  {{ form }}
+  <input type="submit" value="Potwierdź" class="btn btn-primary">
+</form>
+{% endblock %}
