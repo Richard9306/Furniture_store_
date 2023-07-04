@@ -3,7 +3,7 @@
 <h1>Edycja kupującego o ID: {{ object.id }}</h1>
 <form method="post">
   {% csrf_token %}
-  {{ form }}
+  {{ form.as_ul }}
   <input type="submit" value="Potwierdź" class="btn btn-primary">
 </form>
 {% endblock %}

@@ -3,7 +3,7 @@
 <h1>Rejestracja:</h1>
 <form method="post">
     {% csrf_token %}
-    {{ form }}
+    {{ form.as_ul }}
     <input type="submit" value="Zarejestruj" class="btn btn-primary">
 </form>
 

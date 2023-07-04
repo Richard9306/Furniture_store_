@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 # Create your models here.
 class Customers(models.Model):
-
     birth_date = models.DateField()
     phone_nr = models.CharField(max_length=15)
     country = models.CharField(max_length=60, default="Polska")
