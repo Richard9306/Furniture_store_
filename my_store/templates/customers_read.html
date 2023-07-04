@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>Kupujący:</h2>
+<h2 xmlns="http://www.w3.org/1999/html">Kupujący:</h2>
 <table border="1">
     <tr>
         <th>ID</th>
@@ -16,7 +16,7 @@
         <th>Ulica</th>
         <th>Nr domu</th>
         <th>Nr mieszkania</th>
-        <th>Modyfikuj</th>
+        <th>Modyfikuj_rekordy</th>
     </tr>
 {% for c in customers %}
     <tr>
@@ -33,11 +33,14 @@
         <td>{{ c.street }}</td>
         <td>{{ c.house_nr }}</td>
         <td>{{ c.flat_nr }}</td>
-        <td><a class="btn btn-primary" href="{% url 'customer_update' pk=c.id %}">Edytuj</a></td>
-        <td><a class="btn btn-primary" href="{% url 'customer_delete' pk=c.id %}">Usuń</a></td>
+        <td><a class="btn btn-primary" href="{% url 'customer_update' pk=c.id %}">Edytuj</a>
+            <a class="btn btn-primary" href="{% url 'customer_delete' pk=c.id %}">Usuń</a>
+        </td>
 
     </tr>
 {% endfor %}
-
 </table>
+<a class="btn btn-primary" href="{% url 'customer_create' %}">Utwórz nowego kupującego</a>
+<a class="btn btn-primary" href="{% url 'user_to_customer_create' %}">Dodaj użytkownika do kupujących</a>
+
 {% endblock %}

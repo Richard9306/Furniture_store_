@@ -10,25 +10,25 @@ from django.contrib.auth.models import User
 from my_store import forms, models
 # Create your views here.
 
-class HelloView(View):
+class HomeView(View):
     def get(self, request):
-        return render(request, template_name="hello.html")
+        return render(request, template_name="index.html")
 
 class UserCreateView(CreateView):
-    template_name = "accounts/registration.html"
+    template_name = "registration.html"
     model = User
     form_class = forms.UserSignUpForm
     success_url = reverse_lazy("hello")
 
 
 class SubmittablePasswordChangeView(PasswordChangeView):
-    template_name = "accounts/password_change.html"
+    template_name = "password_change.html"
     success_url = reverse_lazy("password_change_done")
 
 class SubmittablePasswordChangeDoneView(PasswordChangeDoneView):
-    template_name = "accounts/password_change_done.html"
+    template_name = "password_change_done.html"
 class SubmittableLogoutView(LogoutView):
-    template_name = "accounts/logout.html"
+    template_name = "logout.html"
 
 class CustomerRead(View):
     def get(self, request):
@@ -55,3 +55,10 @@ class CustomerDeleteView(PermissionRequiredMixin, DeleteView):
     model = models.Customers
     success_url = reverse_lazy("customers_read")
     permission_required = "my_store.delete_customers"
+
+class UserToCustomerCreateView(CreateView):
+    template_name = "user_to_customer_create.html"
+    model = models.Customers
+    form_class = forms.UserToCustomerForm
+    success_url = reverse_lazy("customers_read")
+
