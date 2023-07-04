@@ -25,23 +25,24 @@
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
             <a class="nav-item nav-link active" href="{% url 'hello' %}">
-              Główna
+              <img src="{% static 'my_store/homepage.png' %}" alt="Strona domowa">
             </a>
           </div>
 
           <div class="navbar-nav">
             <a class="nav-item nav-link active" href="{% url 'customers_read' %}">
-              CRUDy
+              <img src="{% static 'my_store/settings.png' %}" alt="Ustawienia">
             </a>
           </div>
                          <div class="navbar-nav">
             <a class="nav-item nav-link active" href="{% url 'registration' %}">
-              Zarejestruj nowego użytkownika
+              Zarejestruj
             </a>
           </div>
 
 
 <div class="navbar-nav ml-auto">
+  <img src="{% static 'my_store/basket.png' %}" alt="Koszyk">
   <div class="nav-item dropdown">
     {% if user.is_authenticated %}
       <a class="nav-link active dropdown-toggle" href="#" data-toggle="dropdown">

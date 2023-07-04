@@ -18,12 +18,10 @@ from django.contrib import admin
 from django.urls import path, include
 from my_store import views
 from django.contrib.auth.views import LoginView
-from django_registration import backends
 
 change_password = "change_password"
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path(r'^accounts/', include('registration.backends.hmac.urls')),
     path("accounts/login/", LoginView.as_view(), name="login"),
     path("accounts/logout/", views.SubmittableLogoutView.as_view(), name="logout"),
     path("accounts/registration", views.UserCreateView.as_view(), name="registration"),

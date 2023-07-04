@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+{% load static %}
 <h2 xmlns="http://www.w3.org/1999/html">Kupujący:</h2>
 <table border="1">
     <tr>
@@ -33,14 +34,16 @@
         <td>{{ c.street }}</td>
         <td>{{ c.house_nr }}</td>
         <td>{{ c.flat_nr }}</td>
-        <td><a class="btn btn-primary" href="{% url 'customer_update' pk=c.id %}">Edytuj</a>
-            <a class="btn btn-primary" href="{% url 'customer_delete' pk=c.id %}">Usuń</a>
+        <td>
+            <a class="btn btn-primary" href="{% url 'customer_update' pk=c.id %}"><img src="{% static 'my_store/edit.png' %}" alt="Edytuj"></a>
+            <a class="btn btn-primary" href="{% url 'customer_delete' pk=c.id %}"><img src="{% static 'my_store/delete.png' %}" alt="Usuń"></a>
         </td>
 
     </tr>
 {% endfor %}
 </table>
-<a class="btn btn-primary" href="{% url 'customer_create' %}">Utwórz nowego kupującego</a>
+
+<a class="btn btn-primary" href="{% url 'customer_create' %}" >Utwórz nowego kupującego</a>
 <a class="btn btn-primary" href="{% url 'user_to_customer_create' %}">Dodaj użytkownika do kupujących</a>
 
 {% endblock %}
