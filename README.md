@@ -1,6 +1,5 @@
 # Furniture store - web store
 Simple web store
-> Live demo [_here_](https://www.example.com). <!-- If you have the project hosted somewhere, include the link here. -->
 
 ## Table of Contents
 * [General Info](#general-information)
@@ -13,7 +12,7 @@ Simple web store
 * [Room for Improvement](#room-for-improvement)
 * [Acknowledgements](#acknowledgements)
 * [Contact](#contact)
-<!-- * [License](#license) -->
+
 
 
 ## General Information
@@ -21,7 +20,6 @@ Simple web store
 - What problem does it (intend to) solve?
 - What is the purpose of your project?
 - Why did you undertake it?
-<!-- You don't have to answer all the questions - just the ones relevant to your project. -->
 
 
 ## Technologies Used
@@ -39,7 +37,7 @@ List the ready features here:
 
 ## Screenshots
 ![Example screenshot](./img/screenshot.png)
-<!-- If you have screenshots you'd like to share, include them here. -->
+
 
 
 ## Setup
@@ -56,7 +54,7 @@ Provide various use cases and code examples here.
 
 
 ## Project Status
-Project is: _in progress_ / _complete_ / _no longer being worked on_. If you are no longer working on it, provide reasons why.
+Project is: _in progress_ .
 
 
 ## Room for Improvement
@@ -74,7 +72,6 @@ To do:
 ## Acknowledgements
 - This README was inspired by [@flynerdpl](https://www.flynerd.pl/) 
 - This README was based on [README-cheatsheet](https://github.com/ritaly/README-cheatsheet/blob/master/README.md?plain=1)
-- Many thanks to...
 
 
 ## Contact
