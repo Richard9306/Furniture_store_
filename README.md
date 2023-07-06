@@ -34,19 +34,13 @@ The project is created as part of training and expanding knowledge about Django 
 ![Example screenshot](https://github.com/Richard9306/Furniture_store_/blob/develop/img/Zrzut%20ekranu%202023-07-06%20183154.png)
 
 
-
 ## Setup
-Project requirements/dependencies are listed in the [requirements.txt]() file. Where is it located?
-
-Proceed to describe how to install / setup one's local environment / get started with the project.
-
+Project requirements/dependencies are listed in the [requirements.txt](https://github.com/Richard9306/Furniture_store_/blob/develop/requirements.txt) file.
 
 ## Project Status
 Project is:  _in progress_ 
 
-
 ## Room for Improvement
-
 Room for improvement:
 - Change all built-in texts for the user to Polish
 - Improve the readability of forms
@@ -56,7 +50,6 @@ To do:
 - Add searching
 - Add fitering
 - Add email subscriptions
-
 
 ## Acknowledgements
 - This README was inspired by [@flynerdpl](https://www.flynerd.pl/) 
