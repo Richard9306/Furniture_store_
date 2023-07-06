@@ -79,7 +79,7 @@ Give credit here.
 
 
 ## Contact
-Created by [Richard9306](www.linkedin.com/in/ryszardnajewski) - feel free to contact me!
+Created by [Richard9306](https://github.com/Richard9306) - feel free to contact me!
 
 
 <!-- Optional -->
