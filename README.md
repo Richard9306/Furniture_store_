@@ -36,7 +36,7 @@ The project is created as part of training and expanding knowledge about Django 
 
 
 ## Setup
-What are the project requirements/dependencies? Where are they listed? A requirements.txt or a Pipfile.lock file perhaps? Where is it located?
+Project requirements/dependencies are listed in the [requirements.txt]() file. Where is it located?
 
 Proceed to describe how to install / setup one's local environment / get started with the project.
 
