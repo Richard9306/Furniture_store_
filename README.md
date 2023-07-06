@@ -40,7 +40,8 @@ List the ready features here:
 
 
 ## Screenshots
-![Example screenshot](./img/screenshot.png)
+![Example screenshot](https://github.com/Richard9306/Furniture_store_/blob/develop/img/Zrzut%20ekranu%202023-07-06%20183134.png)
+![Example screenshot](https://github.com/Richard9306/Furniture_store_/blob/develop/img/Zrzut%20ekranu%202023-07-06%20183134.png)
 
 
 
