@@ -72,18 +72,10 @@ To do:
 
 
 ## Acknowledgements
-Give credit here.
-- This project was inspired by...
-- This project was based on [this tutorial](https://www.example.com).
+- This README was inspired by [@flynerdpl](https://www.flynerd.pl/) 
+- This README was based on [README-cheatsheet](https://github.com/ritaly/README-cheatsheet/blob/master/README.md?plain=1)
 - Many thanks to...
 
 
 ## Contact
 Created by [Richard9306](https://github.com/Richard9306) - feel free to contact me!
-
-
-<!-- Optional -->
-<!-- ## License -->
-<!-- This project is open source and available under the [... License](). -->
-
-<!-- You don't have to include all sections - just the one's relevant to your project -->
