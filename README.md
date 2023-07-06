@@ -23,16 +23,20 @@ Simple web store
 
 
 ## Technologies Used
-- Tech 1 - version 1.0
-- Tech 2 - version 2.0
-- Tech 3 - version 3.0
+- Django==4.2.2
+- Python==3.10
+- asgiref==3.7.2
+- confusable-homoglyphs==3.2.0
+- sqlparse==0.4.4
+- typing_extensions==4.7.1
+- tzdata==2023.3
+
 
 
 ## Features
 List the ready features here:
-- Awesome feature 1
-- Awesome feature 2
-- Awesome feature 3
+- Registration
+- Login
 
 
 ## Screenshots
@@ -54,19 +58,20 @@ Provide various use cases and code examples here.
 
 
 ## Project Status
-Project is: _in progress_ .
+Project is:  _in progress_ 
 
 
 ## Room for Improvement
-Include areas you believe need improvement / could be improved. Also add TODOs for future development.
 
 Room for improvement:
-- Improvement to be done 1
-- Improvement to be done 2
+- Change all built-in texts for the user to Polish
+- Improve the readability of forms
 
 To do:
-- Feature to be added 1
-- Feature to be added 2
+- Add CRUD for Orders
+- Add searching
+- Add fitering
+- Add email subscriptions
 
 
 ## Acknowledgements
