@@ -1,11 +1,11 @@
 from django.shortcuts import render
 from django.views import View
-from django.contrib.auth.views import PasswordChangeView, PasswordChangeDoneView, LogoutView
-import re
-from django.views.generic import FormView, UpdateView, DeleteView, CreateView
+from django.contrib.auth.views import PasswordChangeView, PasswordChangeDoneView, LogoutView, PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView
+
+from django.views.generic import UpdateView, DeleteView, CreateView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
-from django.contrib.auth.forms import UserCreationForm
+
 from django.contrib.auth.models import User
 from my_store import forms, models
 # Create your views here.
@@ -27,6 +27,15 @@ class SubmittablePasswordChangeView(PasswordChangeView):
 
 class SubmittablePasswordChangeDoneView(PasswordChangeDoneView):
     template_name = "password_change_done.html"
+
+class SubmittablePasswordResetView(PasswordResetView):
+    template_name = "password_reset.html"
+    success_url = reverse_lazy("password_reset_confirm")
+
+class SubmittablePasswordResetConfirmView(PasswordResetConfirmView):
+    template_name = "password_reset_confirm.html"
+class SubmittablePasswordResetDoneView(PasswordResetDoneView):
+    template_name = "password_reset_done.html"
 class SubmittableLogoutView(LogoutView):
     template_name = "logout.html"
 
@@ -36,14 +45,14 @@ class CustomerRead(View):
 
         return render(request, template_name="customers_read.html", context={"customers": customers})
 
-# print(dir(models.Customers.objects.all()[0].user))
+
 class CustomerCreateView(CreateView):
     template_name = "customer_create.html"
     model = models.Customers
     form_class = forms.CustomerForm
     success_url = reverse_lazy("customers_read")
 
-class CustomerUpdateView(PermissionRequiredMixin, UpdateView):
+class CustomerUpdateView(LoginRequiredMixin, UpdateView):
     template_name = "customer_update.html"
     model = models.Customers
     form_class = forms.CustomerForm
@@ -54,11 +63,12 @@ class CustomerDeleteView(PermissionRequiredMixin, DeleteView):
     template_name = "customer_delete.html"
     model = models.Customers
     success_url = reverse_lazy("customers_read")
-    permission_required = "my_store.delete_customers"
+    permission_required = "my_store.delete_customers", "my_store.delete_user"
 
-class UserToCustomerCreateView(CreateView):
+class UserToCustomerCreateView(LoginRequiredMixin,CreateView):
     template_name = "user_to_customer_create.html"
     model = models.Customers
     form_class = forms.UserToCustomerForm
     success_url = reverse_lazy("customers_read")
+
 
