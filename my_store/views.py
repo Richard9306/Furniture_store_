@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views import View
-from django.contrib.auth.views import PasswordChangeView, PasswordChangeDoneView, LogoutView, PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView
+from django.contrib.auth.views import PasswordChangeView, PasswordChangeDoneView, LogoutView, PasswordResetView, \
+    PasswordResetDoneView, PasswordResetConfirmView, LoginView
 
 from django.views.generic import UpdateView, DeleteView, CreateView
 from django.urls import reverse_lazy
@@ -8,7 +9,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMix
 
 from django.contrib.auth.models import User
 from my_store import forms, models
-# Create your views here.
+
 
 class HomeView(View):
     def get(self, request):
@@ -22,6 +23,7 @@ class UserCreateView(CreateView):
 
 
 class SubmittablePasswordChangeView(PasswordChangeView):
+    form_class = forms.SubmittablePasswordChangeForm
     template_name = "password_change.html"
     success_url = reverse_lazy("password_change_done")
 
@@ -34,15 +36,16 @@ class SubmittablePasswordResetView(PasswordResetView):
 
 class SubmittablePasswordResetConfirmView(PasswordResetConfirmView):
     template_name = "password_reset_confirm.html"
+
 class SubmittablePasswordResetDoneView(PasswordResetDoneView):
     template_name = "password_reset_done.html"
+
 class SubmittableLogoutView(LogoutView):
     template_name = "logout.html"
 
 class CustomerRead(View):
     def get(self, request):
         customers = models.Customers.objects.all()
-
         return render(request, template_name="customers_read.html", context={"customers": customers})
 
 
@@ -71,4 +74,6 @@ class UserToCustomerCreateView(LoginRequiredMixin,CreateView):
     form_class = forms.UserToCustomerForm
     success_url = reverse_lazy("customers_read")
 
-
+class SubmittableLoginView(LoginView):
+    form_class = forms.SubmittableAuthenticationForm
+    template_name = "registration/login.html"

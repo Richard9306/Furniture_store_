@@ -17,12 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from my_store import views
-from django.contrib.auth.views import LoginView
 
 change_password = "change_password"
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("accounts/login/", LoginView.as_view(), name="login"),
+    path("accounts/login/", views.SubmittableLoginView.as_view(), name="login"),
     path("accounts/logout/", views.SubmittableLogoutView.as_view(), name="logout"),
     path("accounts/registration", views.UserCreateView.as_view(), name="registration"),
     path("accounts/password_reset", views.SubmittablePasswordResetView.as_view(), name="password_reset"),

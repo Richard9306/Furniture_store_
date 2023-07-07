@@ -1,7 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.utils import timezone
-# Create your models here.
 class Customers(models.Model):
     birth_date = models.DateField()
     phone_nr = models.CharField(max_length=15)
@@ -10,7 +8,7 @@ class Customers(models.Model):
     postal_code = models.CharField(max_length=6)
     street = models.CharField(max_length=75)
     house_nr = models.CharField(max_length=10)
-    flat_nr = models.IntegerField()
+    flat_nr = models.IntegerField(null=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
     def __str__(self):
         return f"Klient: {self.user}"
