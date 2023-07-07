@@ -25,19 +25,43 @@
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
             <a class="nav-item nav-link active" href="{% url 'hello' %}">
-              Główna
+              <img src="{% static 'my_store/homepage.png' %}" alt="Strona domowa">
             </a>
           </div>
-                   <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="{% url 'login' %}">
-              Zaloguj
+
+          <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="{% url 'customers_read' %}">
+              <img src="{% static 'my_store/settings.png' %}" alt="Ustawienia">CRUDy
             </a>
           </div>
-                         <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="{% url 'registration' %}">
-              Zarejestruj
-            </a>
-          </div>
+
+
+
+<div class="navbar-nav ml-auto">
+  <img src="{% static 'my_store/basket.png' %}" alt="Koszyk">
+  <div class="nav-item dropdown">
+    {% if user.is_authenticated %}
+      <a class="nav-link active dropdown-toggle" href="#" data-toggle="dropdown">
+        {% if user.first_name %}Witaj, {{ user.first_name }}!
+        {% else %}Witaj, {{ user.username }}!{% endif %}
+      </a>
+      <div class="dropdown-menu dropdown-menu-right">
+        <a class="dropdown-item text-right" href="{% url 'logout' %}">Wyloguj</a>
+        <a class="dropdown-item text-right" href="{% url 'password_change' %}">Zmień hasło</a>
+        <a class="dropdown-item text-right" href="{% url 'customer_update' pk=user.id %}">Edytuj swoje dane</a>
+        <a class="dropdown-item text-right" href="{% url 'user_to_customer_create'%}">Dodaj użytkownika do kupujących</a>
+      </div>
+    {% else %}
+      <a class="nav-link active dropdown-toggle" href="#" data-toggle="dropdown">
+        Nie jesteś zalogowany
+      </a>
+      <div class="dropdown-menu dropdown-menu-right">
+        <a class="dropdown-item text-right" href="{% url 'login' %}">Zaloguj się</a>
+        <a class="dropdown-item text-right" href="{% url 'registration' %}">Zarejestruj się</a>
+      </div>
+    {% endif %}
+  </div>
+</div>
         </div>
       </div>
     </nav>
@@ -46,6 +70,7 @@
         {% block content %}{% endblock %}
       </div>
     </div>
+
   </body>
 
 </html>
