@@ -2,11 +2,10 @@ from django.shortcuts import render
 from django.views import View
 from django.contrib.auth.views import PasswordChangeView, PasswordChangeDoneView, LogoutView, PasswordResetView, \
     PasswordResetDoneView, PasswordResetConfirmView, LoginView
-
+from django.contrib.auth import login
 from django.views.generic import UpdateView, DeleteView, CreateView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
-
 from django.contrib.auth.models import User
 from my_store import forms, models
 from my_store.models import Customers
@@ -21,6 +20,11 @@ class UserCreateView(CreateView):
     model = User
     form_class = forms.UserSignUpForm
     success_url = reverse_lazy("hello")
+
+    def form_valid(self, form):
+        valid = super().form_valid(form)
+        login(self.request, self.object)
+        return valid
 
 
 class SubmittablePasswordChangeView(PasswordChangeView):
@@ -47,7 +51,8 @@ class SubmittableLogoutView(LogoutView):
 class CustomerRead(View):
     def get(self, request):
         customers = models.Customers.objects.all()
-        return render(request, template_name="customers_read.html", context={"customers": customers})
+        curr_user = request.user.id
+        return render(request, template_name="customers_read.html", context={"customers": customers, "curr_user": curr_user})
 
 
 class CustomerCreateView(CreateView):
@@ -74,12 +79,13 @@ class CustomerDeleteView(PermissionRequiredMixin, DeleteView):
     success_url = reverse_lazy("customers_read")
     permission_required = "my_store.delete_customers", "my_store.delete_user"
 
-class UserToCustomerCreateView(LoginRequiredMixin,CreateView):
+class UserToCustomerCreateView(LoginRequiredMixin,UpdateView):
     template_name = "user_to_customer_create.html"
     model = models.Customers
     form_class = forms.UserToCustomerForm
     success_url = reverse_lazy("customers_read")
-
+    # def get(self, request):
+    #     return render(request, template_name="user_to_customer_create.html", context={"curr_user": request.user.id})
 class SubmittableLoginView(LoginView):
     form_class = forms.SubmittableAuthenticationForm
     template_name = "registration/login.html"

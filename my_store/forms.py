@@ -1,8 +1,6 @@
 from django.contrib.auth import password_validation
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm, AuthenticationForm, UsernameField
 from django import forms
-from django.contrib.auth.password_validation import NumericPasswordValidator
-
 from my_store import models
 from django.contrib.auth.models import User
 from django.db.transaction import atomic
@@ -10,21 +8,16 @@ from django.db.transaction import atomic
 class UserSignUpForm(UserCreationForm):
 
     help_texts = {
-        "min_length": "Twoje hasło musi składać się conajmniej z 8 znaków."
+
     }
     error_messages = {
-        "password_mismatch": "Podane hasła nie są jednakowe."
+        "password_mismatch": "Podane hasła różnią się !"
     }
     password1 = forms.CharField(
         label="",
         strip=False,
         widget=forms.PasswordInput(attrs={"class": "form-control", "autocomplete": "new-password", "placeholder": "Hasło*"}),
         help_text=password_validation.password_validators_help_text_html(),
-        # """Twoje hasło nie może być zbyt podobne do innych danych osobowych.
-        #           Twoje hasło musi zawierać co najmniej 8 znaków.
-        #           Twoje hasło nie może być powszechnie używanym hasłem.
-        #           Twoje hasło nie może składać się wyłącznie z cyfr."""
-
     )
     password2 = forms.CharField(
         label="",
@@ -34,26 +27,51 @@ class UserSignUpForm(UserCreationForm):
     )
     class Meta:
         model = User
-        fields = ["username", "email"]
+        fields = ["username"]
         labels = {
             "username": "*Pola obowiązkowe",
-            "email": "",
         }
         widgets = {
             "username": forms.TextInput(attrs={"class": "form-control", "placeholder": "Login*"}),
-            "email": forms.EmailInput(attrs={"class": "form-control", "placeholder": "E-mail*"}),
         }
 
         help_texts = {
             "username": "Dozwolona ilość znaków to: 150. Tylko litery, cyfry i @/./+/-/_."
         }
 
+class SubmittablePasswordChangeForm(PasswordChangeForm):
+    old_password = forms.CharField(
+        label="",
+        strip=False,
+        widget=forms.PasswordInput(
+            attrs={"class": "form-control", "autocomplete": "current-password", "autofocus": True, "placeholder": "Dotychczasowe hasło"}
+        ),
+    )
+    new_password1 = forms.CharField(
+        label="",
+        widget=forms.PasswordInput(attrs={"class": "form-control", "placeholder": "Nowe hasło", "autocomplete": "new-password"}),
+        strip=False,
+        help_text=password_validation.password_validators_help_text_html(),
+    )
+    new_password2 = forms.CharField(
+        label="",
+        strip=False,
+        widget=forms.PasswordInput(attrs={"class": "form-control", "placeholder": "Powtórz nowe hasło", "autocomplete": "new-password"}),
+    )
 
+class SubmittableAuthenticationForm(AuthenticationForm):
+    username = UsernameField(label="", widget=forms.TextInput(attrs={"class": "form-control", "placeholder": "Login", "autofocus": True}))
+    password = forms.CharField(
+        label="",
+        strip=False,
+        widget=forms.PasswordInput(attrs={"class": "form-control", "placeholder": "Hasło", "autocomplete": "current-password"}),
+    )
 class UserToCustomerForm(forms.ModelForm):
 
     class Meta:
-        model = models.Customers
-        fields = "__all__"
+        model = User
+        fields = ["username", "first_name", "last_name", "email"]
+
 class CustomerForm(UserCreationForm):
 
     class Meta:
@@ -75,7 +93,7 @@ class CustomerForm(UserCreationForm):
         }
 
         help_texts = {
-            "username": "Dozwolona ilość znaków: 150. Tylko litery, cyfry i @/./+/-/_."
+            "username": "Dozwolona ilość znaków to: 150. Tylko litery, cyfry i @/./+/-/_."
         }
 
         error_messages = {
@@ -131,30 +149,4 @@ class CustomerForm(UserCreationForm):
             customer.save()
         return result
 
-class SubmittablePasswordChangeForm(PasswordChangeForm):
-    old_password = forms.CharField(
-        label="",
-        strip=False,
-        widget=forms.PasswordInput(
-            attrs={"class": "form-control", "autocomplete": "current-password", "autofocus": True, "placeholder": "Dotychczasowe hasło"}
-        ),
-    )
-    new_password1 = forms.CharField(
-        label="",
-        widget=forms.PasswordInput(attrs={"class": "form-control", "placeholder": "Nowe hasło", "autocomplete": "new-password"}),
-        strip=False,
-        help_text=password_validation.password_validators_help_text_html(),
-    )
-    new_password2 = forms.CharField(
-        label="",
-        strip=False,
-        widget=forms.PasswordInput(attrs={"class": "form-control", "placeholder": "Nowe hasło", "autocomplete": "new-password"}),
-    )
 
-class SubmittableAuthenticationForm(AuthenticationForm):
-    username = UsernameField(label="", widget=forms.TextInput(attrs={"class": "form-control", "placeholder": "Login", "autofocus": True}))
-    password = forms.CharField(
-        label="",
-        strip=False,
-        widget=forms.PasswordInput(attrs={"class": "form-control", "placeholder": "Hasło", "autocomplete": "current-password"}),
-    )

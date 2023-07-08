@@ -49,7 +49,7 @@
         <a class="dropdown-item text-right" href="{% url 'logout' %}">Wyloguj</a>
         <a class="dropdown-item text-right" href="{% url 'password_change' %}">Zmień hasło</a>
         <a class="dropdown-item text-right" href="{% url 'customer_update' pk=user.id %}">Edytuj swoje dane</a>
-        <a class="dropdown-item text-right" href="{% url 'user_to_customer_create'%}">Dodaj użytkownika do kupujących</a>
+        <a class="dropdown-item text-right" href="{% url 'user_to_customer_create' pk=user.id %}">Dodaj użytkownika do kupujących</a>
       </div>
     {% else %}
       <a class="nav-link active dropdown-toggle" href="#" data-toggle="dropdown">
