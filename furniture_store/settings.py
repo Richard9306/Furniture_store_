@@ -87,16 +87,20 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+        # "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+        "NAME": "my_store.my_password_validators.MyUserAttributeSimilarityValidator",
     },
     {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
+        # "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
+        "NAME": "my_store.my_password_validators.MyMinimumLengthValidator",
     },
     {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
+        # "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
+        "NAME": "my_store.my_password_validators.MyCommonPasswordValidator",
     },
     {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
+        # "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
+        "NAME": "my_store.my_password_validators.MyNumericPasswordValidator",
     },
 ]
 
@@ -124,6 +128,3 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGIN_REDIRECT_URL = 'hello'
-
-# two days
-ACCOUNT_ACTIVATION_DAYS = 2

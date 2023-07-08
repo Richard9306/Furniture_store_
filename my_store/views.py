@@ -9,6 +9,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMix
 
 from django.contrib.auth.models import User
 from my_store import forms, models
+from my_store.models import Customers
 
 
 class HomeView(View):
@@ -61,6 +62,11 @@ class CustomerUpdateView(LoginRequiredMixin, UpdateView):
     form_class = forms.CustomerForm
     success_url = reverse_lazy("customers_read")
     permission_required = "my_store.change_customers"
+
+    def bound_form(request, id):
+        customer = Customers.objects.get(id=id)
+        form = forms.CustomerForm(initial={"name": customer.phone_nr})
+        return render(request, template_name="customer_update.html", context={"form": form})
 
 class CustomerDeleteView(PermissionRequiredMixin, DeleteView):
     template_name = "customer_delete.html"

@@ -1,40 +1,30 @@
 from django.contrib.auth import password_validation
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm, AuthenticationForm, UsernameField
 from django import forms
+from django.contrib.auth.password_validation import NumericPasswordValidator
+
 from my_store import models
 from django.contrib.auth.models import User
 from django.db.transaction import atomic
 
 class UserSignUpForm(UserCreationForm):
 
-    class Meta:
-        model = User
-        fields = ["username", "first_name", "last_name", "email"]
-        labels = {
-            "username": "",
-            "first_name": "",
-            "last_name": "",
-            "email": "",
-        }
-        widgets = {
-            "username": forms.TextInput(attrs={"class": "form-control", "placeholder": "Login*"}),
-            "first_name": forms.TextInput(attrs={"class": "form-control", "placeholder": "Imię*"}),
-            "last_name": forms.TextInput(attrs={"class": "form-control", "placeholder": "Nazwisko*"}),
-            "email": forms.EmailInput(attrs={"class": "form-control", "placeholder": "E-mail*"}),
-        }
-
-        help_texts = {
-            "username": "Dozwolona ilość znaków: 150. Tylko litery, cyfry i @/./+/-/_."
-        }
-
-        error_messages = {
-
-        }
+    help_texts = {
+        "min_length": "Twoje hasło musi składać się conajmniej z 8 znaków."
+    }
+    error_messages = {
+        "password_mismatch": "Podane hasła nie są jednakowe."
+    }
     password1 = forms.CharField(
         label="",
         strip=False,
         widget=forms.PasswordInput(attrs={"class": "form-control", "autocomplete": "new-password", "placeholder": "Hasło*"}),
         help_text=password_validation.password_validators_help_text_html(),
+        # """Twoje hasło nie może być zbyt podobne do innych danych osobowych.
+        #           Twoje hasło musi zawierać co najmniej 8 znaków.
+        #           Twoje hasło nie może być powszechnie używanym hasłem.
+        #           Twoje hasło nie może składać się wyłącznie z cyfr."""
+
     )
     password2 = forms.CharField(
         label="",
@@ -42,7 +32,25 @@ class UserSignUpForm(UserCreationForm):
         strip=False,
         help_text="",
     )
+    class Meta:
+        model = User
+        fields = ["username", "email"]
+        labels = {
+            "username": "*Pola obowiązkowe",
+            "email": "",
+        }
+        widgets = {
+            "username": forms.TextInput(attrs={"class": "form-control", "placeholder": "Login*"}),
+            "email": forms.EmailInput(attrs={"class": "form-control", "placeholder": "E-mail*"}),
+        }
+
+        help_texts = {
+            "username": "Dozwolona ilość znaków to: 150. Tylko litery, cyfry i @/./+/-/_."
+        }
+
+
 class UserToCustomerForm(forms.ModelForm):
+
     class Meta:
         model = models.Customers
         fields = "__all__"
