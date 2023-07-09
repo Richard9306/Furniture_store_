@@ -68,10 +68,6 @@ class CustomerUpdateView(LoginRequiredMixin, UpdateView):
     success_url = reverse_lazy("customers_read")
     permission_required = "my_store.change_customers"
 
-    def bound_form(request, id):
-        customer = Customers.objects.get(id=id)
-        form = forms.CustomerForm(initial={"name": customer.phone_nr})
-        return render(request, template_name="customer_update.html", context={"form": form})
 
 class CustomerDeleteView(PermissionRequiredMixin, DeleteView):
     template_name = "customer_delete.html"

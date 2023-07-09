@@ -2,15 +2,15 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Customers(models.Model):
-    birth_date = models.DateField()
-    phone_nr = models.CharField(max_length=15)
-    country = models.CharField(max_length=60, default="Polska")
-    city = models.CharField(max_length=45)
-    postal_code = models.CharField(max_length=6)
-    street = models.CharField(max_length=75)
-    house_nr = models.CharField(max_length=10)
+    birth_date = models.DateField(blank=False)
+    phone_nr = models.CharField(max_length=15, blank=False)
+    country = models.CharField(max_length=60, default="Polska", blank=False)
+    city = models.CharField(max_length=45, blank=False)
+    postal_code = models.CharField(max_length=6, blank=False)
+    street = models.CharField(max_length=75, blank=False)
+    house_nr = models.CharField(max_length=10, blank=False)
     flat_nr = models.IntegerField(null=True)
-    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, blank=False)
     def __str__(self):
         return f"Klient: {self.user}"
 
