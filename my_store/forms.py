@@ -113,7 +113,7 @@ class CustomerForm(UserCreationForm):
         max_length=60,
         label="",
         widget=forms.TextInput(attrs={"class": "form-control", "placeholder": "Kraj*"}),
-
+        initial="Polska"
     )
     city = forms.CharField(
         max_length=45,

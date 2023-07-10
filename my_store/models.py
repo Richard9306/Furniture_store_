@@ -9,7 +9,7 @@ class Customers(models.Model):
     postal_code = models.CharField(max_length=6, blank=False)
     street = models.CharField(max_length=75, blank=False)
     house_nr = models.CharField(max_length=10, blank=False)
-    flat_nr = models.IntegerField(null=True)
+    flat_nr = models.PositiveIntegerField(null=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE, blank=False)
     def __str__(self):
         return f"Klient: {self.user}"

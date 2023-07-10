@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views import View
 from django.contrib.auth.views import PasswordChangeView, PasswordChangeDoneView, LogoutView, PasswordResetView, \
     PasswordResetDoneView, PasswordResetConfirmView, LoginView
@@ -8,7 +8,6 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.auth.models import User
 from my_store import forms, models
-from my_store.models import Customers
 
 
 class HomeView(View):
@@ -68,7 +67,7 @@ class CustomerCreateView(CreateView):
 class CustomerUpdateView(LoginRequiredMixin, UpdateView):
     template_name = "customer_update.html"
     model = models.Customers
-    form_class = forms.CustomerForm
+    form_class = forms.CustomerForm(initial={'user': 'instance'}, auto_id=False)
     success_url = reverse_lazy("customers_read")
     permission_required = "my_store.change_customers"
 
