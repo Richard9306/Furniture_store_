@@ -34,5 +34,5 @@ urlpatterns = [
     path("customers/create", views.CustomerCreateView.as_view(), name="customer_create"),
     path("customers/update/<pk>", views.CustomerUpdateView.as_view(), name="customer_update"),
     path("customers/delete/<pk>", views.CustomerDeleteView.as_view(), name="customer_delete"),
-    path("customers/user_to_customer_create/<pk>", views.UserToCustomerCreateView.as_view(), name="user_to_customer_create")
+
 ]

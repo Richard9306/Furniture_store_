@@ -1,3 +1,4 @@
+
 from django.shortcuts import render, get_object_or_404
 from django.views import View
 from django.contrib.auth.views import PasswordChangeView, PasswordChangeDoneView, LogoutView, PasswordResetView, \
@@ -44,6 +45,10 @@ class SubmittablePasswordResetConfirmView(PasswordResetConfirmView):
 class SubmittablePasswordResetDoneView(PasswordResetDoneView):
     template_name = "password_reset_done.html"
 
+class SubmittableLoginView(LoginView):
+    form_class = forms.SubmittableAuthenticationForm
+    template_name = "registration/login.html"
+
 class SubmittableLogoutView(LogoutView):
     template_name = "logout.html"
 
@@ -67,9 +72,12 @@ class CustomerCreateView(CreateView):
 class CustomerUpdateView(LoginRequiredMixin, UpdateView):
     template_name = "customer_update.html"
     model = models.Customers
-    form_class = forms.CustomerForm(initial={'user': 'instance'}, auto_id=False)
+    form_class = forms.CustomerUpdateForm
     success_url = reverse_lazy("customers_read")
     permission_required = "my_store.change_customers"
+    # def form_valid(self, form):
+    #     if self.object:
+    #         return self.request.user
 
 
 class CustomerDeleteView(PermissionRequiredMixin, DeleteView):
@@ -78,14 +86,4 @@ class CustomerDeleteView(PermissionRequiredMixin, DeleteView):
     success_url = reverse_lazy("customers_read")
     permission_required = "my_store.delete_customers", "my_store.delete_user"
 
-class UserToCustomerCreateView(LoginRequiredMixin,UpdateView):
-    template_name = "user_to_customer_create.html"
-    model = models.Customers
-    form_class = forms.UserToCustomerForm
-    success_url = reverse_lazy("customers_read")
 
-
-
-class SubmittableLoginView(LoginView):
-    form_class = forms.SubmittableAuthenticationForm
-    template_name = "registration/login.html"
