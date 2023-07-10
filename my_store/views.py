@@ -60,6 +60,10 @@ class CustomerCreateView(CreateView):
     model = models.Customers
     form_class = forms.CustomerForm
     success_url = reverse_lazy("customers_read")
+    def form_valid(self, form):
+        valid = super().form_valid(form)
+        login(self.request, self.object)
+        return valid
 
 class CustomerUpdateView(LoginRequiredMixin, UpdateView):
     template_name = "customer_update.html"
@@ -80,8 +84,9 @@ class UserToCustomerCreateView(LoginRequiredMixin,UpdateView):
     model = models.Customers
     form_class = forms.UserToCustomerForm
     success_url = reverse_lazy("customers_read")
-    # def get(self, request):
-    #     return render(request, template_name="user_to_customer_create.html", context={"curr_user": request.user.id})
+
+
+
 class SubmittableLoginView(LoginView):
     form_class = forms.SubmittableAuthenticationForm
     template_name = "registration/login.html"
