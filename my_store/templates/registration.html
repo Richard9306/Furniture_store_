@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Rejestracja:</h1>
+<h1>Dzień Dobry !</h1>
+<h2>Aby utworzyć nowe konto podaj login i hasło:</h2>
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}

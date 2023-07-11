@@ -59,19 +59,9 @@ class CustomerRead(View):
         return render(request, template_name="customers_read.html", context={"customers": customers, "curr_user": curr_user})
 
 
-class CustomerCreateView(CreateView):
-    template_name = "customer_create.html"
-    model = models.Customers
-    form_class = forms.CustomerForm
-    success_url = reverse_lazy("customers_read")
-    def form_valid(self, form):
-        valid = super().form_valid(form)
-        login(self.request, self.object)
-        return valid
-
 class CustomerUpdateView(LoginRequiredMixin, UpdateView):
     template_name = "customer_update.html"
-    model = models.Customers
+    model = User
     form_class = forms.CustomerUpdateForm
     success_url = reverse_lazy("customers_read")
     permission_required = "my_store.change_customers"
