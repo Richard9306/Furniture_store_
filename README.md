@@ -14,13 +14,10 @@ The project is created as part of training and expanding knowledge about Django 
 
 
 ## Technologies Used
-- Django==4.2.2
-- Python==3.10
-- asgiref==3.7.2
-- confusable-homoglyphs==3.2.0
-- sqlparse==0.4.4
-- typing_extensions==4.7.1
-- tzdata==2023.3
+- Python
+- Django
+- SQLite
+- Bootstrap
 
 
 
