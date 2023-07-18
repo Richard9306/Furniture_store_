@@ -26,7 +26,7 @@ class HomeView(View):
 
 
 class UserCreateView(CreateView):
-    template_name = "registration.html"
+    template_name = "signup.html"
     model = User
     form_class = forms.UserSignUpForm
     success_url = reverse_lazy("hello")
@@ -39,25 +39,25 @@ class UserCreateView(CreateView):
 
 class SubmittablePasswordChangeView(PasswordChangeView):
     form_class = forms.SubmittablePasswordChangeForm
-    template_name = "password_change.html"
+    template_name = "registration/password_change.html"
     success_url = reverse_lazy("password_change_done")
 
 
 class SubmittablePasswordChangeDoneView(PasswordChangeDoneView):
-    template_name = "password_change_done.html"
+    template_name = "registration/password_change_done.html"
 
 
 class SubmittablePasswordResetView(PasswordResetView):
-    template_name = "password_reset.html"
-    success_url = reverse_lazy("password_reset_confirm")
-
-
-class SubmittablePasswordResetConfirmView(PasswordResetConfirmView):
-    template_name = "password_reset_confirm.html"
+    template_name = "registration/password_reset.html"
+    success_url = reverse_lazy("password_reset_done")
 
 
 class SubmittablePasswordResetDoneView(PasswordResetDoneView):
-    template_name = "password_reset_done.html"
+    template_name = "registration/password_reset_done.html"
+
+
+class SubmittablePasswordResetConfirmView(PasswordResetConfirmView):
+    template_name = "registration/password_reset_confirm.html"
 
 
 class SubmittableLoginView(LoginView):
@@ -66,7 +66,7 @@ class SubmittableLoginView(LoginView):
 
 
 class SubmittableLogoutView(LogoutView):
-    template_name = "logout.html"
+    template_name = "registration/logout.html"
 
 
 class CustomerRead(View):
@@ -102,6 +102,7 @@ class CustomerUpdateView(LoginRequiredMixin, UpdateView):
         self.object.user.email = self.request.POST["email"]
         self.object.user.save()
         return super().post(request, **kwargs)
+
 
 class CustomerDeleteView(PermissionRequiredMixin, DeleteView):
     template_name = "customer_delete.html"

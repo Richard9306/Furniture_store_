@@ -6,7 +6,6 @@ from django.contrib.auth.forms import (
     UsernameField,
 )
 from django import forms
-from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator
 
 from my_store import models
@@ -156,11 +155,6 @@ class SubmittableAuthenticationForm(AuthenticationForm):
     }
 
 
-def is_unique_validate_email(value):
-    if User.objects.filter(email=value).exists():
-        raise ValidationError("Podany adres e-mail jest już zajęty.")
-
-
 class CustomerUpdateForm(forms.ModelForm):
     class Meta:
         model = models.Customers
@@ -199,7 +193,6 @@ class CustomerUpdateForm(forms.ModelForm):
             attrs={"class": "form-control", "placeholder": "E-mail*"}
         ),
         required=True,
-        # validators=[is_unique_validate_email]
     )
     phone_nr = forms.CharField(
         max_length=15,
