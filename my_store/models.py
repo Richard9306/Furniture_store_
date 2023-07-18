@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Customers(models.Model):
     birth_date = models.DateField(null=True)
     phone_nr = models.CharField(max_length=15, null=True)
@@ -11,8 +12,10 @@ class Customers(models.Model):
     house_nr = models.CharField(max_length=10, null=True)
     flat_nr = models.PositiveIntegerField(null=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+
     def __str__(self):
         return f"Klient: {self.user}"
+
 
 class Categories(models.Model):
     name = models.CharField(max_length=45)
@@ -20,6 +23,7 @@ class Categories(models.Model):
 
     def __str__(self):
         return f"Kategoria: {self.name}"
+
 
 class Producers(models.Model):
     name = models.CharField(max_length=45)
