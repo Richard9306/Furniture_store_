@@ -1,5 +1,4 @@
-from django.core.exceptions import ImproperlyConfigured
-from django.http import HttpResponseRedirect, Http404
+
 from django.shortcuts import render
 from django.views import View
 from django.contrib.auth.views import (
@@ -9,6 +8,7 @@ from django.contrib.auth.views import (
     PasswordResetView,
     PasswordResetDoneView,
     PasswordResetConfirmView,
+    PasswordResetCompleteView,
     LoginView,
 )
 from django.contrib.auth import login
@@ -17,7 +17,6 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.auth.models import User
 from my_store import forms, models
-from django.utils.translation import gettext as _
 
 
 class HomeView(View):
@@ -48,6 +47,7 @@ class SubmittablePasswordChangeDoneView(PasswordChangeDoneView):
 
 
 class SubmittablePasswordResetView(PasswordResetView):
+    form_class = forms.SubmittablePasswordResetForm
     template_name = "registration/password_reset.html"
     success_url = reverse_lazy("password_reset_done")
 
@@ -57,8 +57,13 @@ class SubmittablePasswordResetDoneView(PasswordResetDoneView):
 
 
 class SubmittablePasswordResetConfirmView(PasswordResetConfirmView):
+    form_class = forms.SubmittableSetPasswordForm
     template_name = "registration/password_reset_confirm.html"
+    success_url = reverse_lazy("password_reset_complete")
 
+
+class SubmittablePasswordResetCompleteView(PasswordResetCompleteView):
+    template_name = "registration/password_reset_complete.html"
 
 class SubmittableLoginView(LoginView):
     form_class = forms.SubmittableAuthenticationForm

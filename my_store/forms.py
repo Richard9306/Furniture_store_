@@ -3,7 +3,7 @@ from django.contrib.auth.forms import (
     UserCreationForm,
     PasswordChangeForm,
     AuthenticationForm,
-    UsernameField,
+    UsernameField, PasswordResetForm, SetPasswordForm,
 )
 from django import forms
 from django.core.validators import RegexValidator
@@ -154,6 +154,44 @@ class SubmittableAuthenticationForm(AuthenticationForm):
         "inactive": "Konto nieaktywne.",
     }
 
+
+class SubmittablePasswordResetForm(PasswordResetForm):
+    email = forms.EmailField(
+        label="",
+        widget=forms.EmailInput(
+            attrs={"class": "form-control", "placeholder": "E-mail*"}
+        ),
+        required=True,
+    )
+
+class SubmittableSetPasswordForm(SetPasswordForm):
+
+    error_messages = {
+        "password_mismatch": "Podane hasła różnią się !",
+    }
+    new_password1 = forms.CharField(
+        label="",
+        widget=forms.PasswordInput(
+            attrs={
+                "class": "form-control",
+                "placeholder": "Nowe hasło",
+                "autocomplete": "new-password",
+            }
+        ),
+        strip=False,
+        help_text=password_validation.password_validators_help_text_html(),
+    )
+    new_password2 = forms.CharField(
+        label="",
+        strip=False,
+        widget=forms.PasswordInput(
+            attrs={
+                "class": "form-control",
+                "placeholder": "Powtórz nowe hasło",
+                "autocomplete": "new-password",
+            }
+        ),
+    )
 
 class CustomerUpdateForm(forms.ModelForm):
     class Meta:
