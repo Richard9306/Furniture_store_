@@ -31,13 +31,15 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "my_store",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "my_store",
+
+    "widget_tweaks",
 ]
 
 MIDDLEWARE = [
@@ -87,16 +89,20 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+        # "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+        "NAME": "my_store.my_validators.my_password_validators.MyUserAttributeSimilarityValidator",
     },
     {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
+        # "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
+        "NAME": "my_store.my_validators.my_password_validators.MyMinimumLengthValidator",
     },
     {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
+        # "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
+        "NAME": "my_store.my_validators.my_password_validators.MyCommonPasswordValidator",
     },
     {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
+        # "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
+        "NAME": "my_store.my_validators.my_password_validators.MyNumericPasswordValidator",
     },
 ]
 
@@ -125,5 +131,5 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGIN_REDIRECT_URL = 'hello'
 
-# two days
-ACCOUNT_ACTIVATION_DAYS = 2
+EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+EMAIL_FILE_PATH = BASE_DIR / "sent_emails"

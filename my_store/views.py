@@ -1,74 +1,116 @@
+
 from django.shortcuts import render
 from django.views import View
-from django.contrib.auth.views import PasswordChangeView, PasswordChangeDoneView, LogoutView, PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView
-
+from django.contrib.auth.views import (
+    PasswordChangeView,
+    PasswordChangeDoneView,
+    LogoutView,
+    PasswordResetView,
+    PasswordResetDoneView,
+    PasswordResetConfirmView,
+    PasswordResetCompleteView,
+    LoginView,
+)
+from django.contrib.auth import login
 from django.views.generic import UpdateView, DeleteView, CreateView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
-
 from django.contrib.auth.models import User
 from my_store import forms, models
-# Create your views here.
+
 
 class HomeView(View):
     def get(self, request):
         return render(request, template_name="index.html")
 
+
 class UserCreateView(CreateView):
-    template_name = "registration.html"
+    template_name = "signup.html"
     model = User
     form_class = forms.UserSignUpForm
     success_url = reverse_lazy("hello")
 
+    def form_valid(self, form):
+        valid = super().form_valid(form)
+        login(self.request, self.object)
+        return valid
+
 
 class SubmittablePasswordChangeView(PasswordChangeView):
-    template_name = "password_change.html"
+    form_class = forms.SubmittablePasswordChangeForm
+    template_name = "registration/password_change.html"
     success_url = reverse_lazy("password_change_done")
 
+
 class SubmittablePasswordChangeDoneView(PasswordChangeDoneView):
-    template_name = "password_change_done.html"
+    template_name = "registration/password_change_done.html"
+
 
 class SubmittablePasswordResetView(PasswordResetView):
-    template_name = "password_reset.html"
-    success_url = reverse_lazy("password_reset_confirm")
+    form_class = forms.SubmittablePasswordResetForm
+    template_name = "registration/password_reset.html"
+    success_url = reverse_lazy("password_reset_done")
+
+
+class SubmittablePasswordResetDoneView(PasswordResetDoneView):
+    template_name = "registration/password_reset_done.html"
+
 
 class SubmittablePasswordResetConfirmView(PasswordResetConfirmView):
-    template_name = "password_reset_confirm.html"
-class SubmittablePasswordResetDoneView(PasswordResetDoneView):
-    template_name = "password_reset_done.html"
+    form_class = forms.SubmittableSetPasswordForm
+    template_name = "registration/password_reset_confirm.html"
+    success_url = reverse_lazy("password_reset_complete")
+
+
+class SubmittablePasswordResetCompleteView(PasswordResetCompleteView):
+    template_name = "registration/password_reset_complete.html"
+
+class SubmittableLoginView(LoginView):
+    form_class = forms.SubmittableAuthenticationForm
+    template_name = "registration/login.html"
+
+
 class SubmittableLogoutView(LogoutView):
-    template_name = "logout.html"
+    template_name = "registration/logout.html"
+
 
 class CustomerRead(View):
     def get(self, request):
         customers = models.Customers.objects.all()
+        return render(
+            request,
+            template_name="customers_read.html",
+            context={"customers": customers},
+        )
 
-        return render(request, template_name="customers_read.html", context={"customers": customers})
-
-
-class CustomerCreateView(CreateView):
-    template_name = "customer_create.html"
-    model = models.Customers
-    form_class = forms.CustomerForm
-    success_url = reverse_lazy("customers_read")
 
 class CustomerUpdateView(LoginRequiredMixin, UpdateView):
     template_name = "customer_update.html"
     model = models.Customers
-    form_class = forms.CustomerForm
+    form_class = forms.CustomerUpdateForm
     success_url = reverse_lazy("customers_read")
     permission_required = "my_store.change_customers"
+
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        self.initial = {
+            "first_name": self.object.user.first_name,
+            "last_name": self.object.user.last_name,
+            "email": self.object.user.email,
+        }
+        return super().get(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        self.object.user.first_name = self.request.POST["first_name"]
+        self.object.user.last_name = self.request.POST["last_name"]
+        self.object.user.email = self.request.POST["email"]
+        self.object.user.save()
+        return super().post(request, **kwargs)
+
 
 class CustomerDeleteView(PermissionRequiredMixin, DeleteView):
     template_name = "customer_delete.html"
     model = models.Customers
     success_url = reverse_lazy("customers_read")
     permission_required = "my_store.delete_customers", "my_store.delete_user"
-
-class UserToCustomerCreateView(LoginRequiredMixin,CreateView):
-    template_name = "user_to_customer_create.html"
-    model = models.Customers
-    form_class = forms.UserToCustomerForm
-    success_url = reverse_lazy("customers_read")
-
-

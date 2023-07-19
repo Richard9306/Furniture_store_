@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Edycja klienta o ID: {{ object.id }}</h1>
+<h1>Edycja klienta {{ object.user.username }} o ID: {{ object.user.id }}</h1>
 <form method="post">
   {% csrf_token %}
+
   {{ form.as_p }}
-  <input type="submit" value="Potwierdź" class="btn btn-primary">
+  <input type="submit" value="Potwierdź" class="btn btn-success">
 </form>
 {% endblock %}

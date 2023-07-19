@@ -1,0 +1,25 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: Password reset on 127.0.0.1:8000
+From: webmaster@localhost
+To: rychun2@wp.pl
+Date: Wed, 19 Jul 2023 06:19:52 -0000
+Message-ID: <168974759216.18092.14029263293251771128@LAPTOP-PA3NR1GG.home>
+
+
+You're receiving this email because you requested a password reset for your user account at 127.0.0.1:8000.
+
+Please go to the following page and choose a new password:
+
+http://127.0.0.1:8000/accounts/password_reset_confirm/MTA/brksh4-6f8161b9a9adff54ee80b4a622ff98ce/
+
+Your username, in case you’ve forgotten: Ryszard93
+
+Thanks for using our site!
+
+The 127.0.0.1:8000 team
+
+
+
+-------------------------------------------------------------------------------
