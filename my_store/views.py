@@ -25,7 +25,7 @@ class HomeView(View):
 
 
 class UserCreateView(CreateView):
-    template_name = "signup.html"
+    template_name = "registration/signup.html"
     model = User
     form_class = forms.UserSignUpForm
     success_url = reverse_lazy("hello")
