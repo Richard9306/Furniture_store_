@@ -27,8 +27,8 @@ The project is created as part of training and expanding knowledge about Django 
 
 
 ## Screenshots
-![Example screenshot](https://github.com/Richard9306/Furniture_store_/blob/master/my_store/static/img/Zrzut%20ekranu%202023-07-06%20183134.png)
-![Example screenshot](https://github.com/Richard9306/Furniture_store_/blob/master/my_store/static/img/Zrzut%20ekranu%202023-07-06%20183154.png)
+![Example screenshot](https://github.com/Richard9306/Furniture_store_/blob/master/my_store/static/img/prtsc1.png)
+![Example screenshot](https://github.com/Richard9306/Furniture_store_/blob/master/my_store/static/img/prtsc2.png)
 
 
 ## Setup
