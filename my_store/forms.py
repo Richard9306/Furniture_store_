@@ -10,6 +10,7 @@ from django.core.validators import RegexValidator
 
 from my_store import models
 from django.contrib.auth.models import User
+import datetime
 
 
 class UserSignUpForm(UserCreationForm):
@@ -193,6 +194,8 @@ class SubmittableSetPasswordForm(SetPasswordForm):
         ),
     )
 
+
+
 class CustomerUpdateForm(forms.ModelForm):
     class Meta:
         model = models.Customers
@@ -210,9 +213,9 @@ class CustomerUpdateForm(forms.ModelForm):
             "house_nr",
             "flat_nr",
         ]
-
         widgets = {"user": forms.HiddenInput()}
 
+    TODAY = datetime.datetime.today().date()
     first_name = forms.CharField(
         label="",
         widget=forms.TextInput(attrs={"class": "form-control", "placeholder": "Imię*"}),
@@ -232,6 +235,7 @@ class CustomerUpdateForm(forms.ModelForm):
         ),
         required=True,
     )
+
     phone_nr = forms.CharField(
         max_length=15,
         label="",
@@ -246,6 +250,8 @@ class CustomerUpdateForm(forms.ModelForm):
             attrs={
                 "class": "form-control",
                 "placeholder": "Data urodzenia(rrrr-mm-dd)*",
+                "max": TODAY,
+                "type": "date"
             }
         ),
         required=True,

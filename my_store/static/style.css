@@ -1,0 +1,60 @@
+body
+{
+    font-family: 'Roboto', sans-serif;
+   
+}
+.navbar-brand img
+{
+    width: 50px;
+    height: 50px;
+}
+.navbar-brand span
+{
+    letter-spacing: 2px;
+    font-size: 30px;
+}
+.navbar-brand span b
+{
+    color: #1EBE53;
+}
+.option:hover
+{
+    border-bottom: 3px solid #1EBE53;
+
+}
+.navbar-nav li:hover >.dropdown-menu
+{
+    display: block;
+}
+.navbar-nav
+{
+    min-height: 43px;
+}
+
+.btn-outline-success
+{
+    color: #1EBE53;
+    border-color: #1EBE53 !important;
+}
+.btn-outline-success:hover
+{
+    background-color: #1EBE53 !important;
+
+}
+.carousel-inner
+{
+    height: 600px;
+}
+.licence
+{
+    font-size: 10px;
+}
+.row div:hover
+{
+    cursor: pointer;
+    color: #1EBE53;
+}
+.myheight
+{
+    height: 500px;
+}

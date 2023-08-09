@@ -4,7 +4,7 @@
 <form method="post">
   {% csrf_token %}
 
-  {{ form.as_p }}
+  {{ form.as_div }}
   <input type="submit" value="Potwierdź" class="btn btn-success">
 </form>
 {% endblock %}
