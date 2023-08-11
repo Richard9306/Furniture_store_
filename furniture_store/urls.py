@@ -20,6 +20,7 @@ from my_store import views
 
 
 urlpatterns = [
+    path("", views.HomeView.as_view(), name="hello"),
     path("admin/", admin.site.urls),
     path("accounts/login/", views.SubmittableLoginView.as_view(), name="login"),
     path("accounts/logout/", views.SubmittableLogoutView.as_view(), name="logout"),
@@ -30,7 +31,6 @@ urlpatterns = [
     path("accounts/password_reset_complete", views.SubmittablePasswordResetCompleteView.as_view(), name="password_reset_complete"),
     path("accounts/password_change", views.SubmittablePasswordChangeView.as_view(), name="password_change"),
     path("accounts/password_change_done", views.SubmittablePasswordChangeDoneView.as_view(), name="password_change_done"),
-    path("Home", views.HomeView.as_view(), name="hello"),
     path("customers/read", views.CustomerRead.as_view(), name="customers_read"),
     path("customers/update/<pk>", views.CustomerUpdateView.as_view(), name="customer_update"),
     path("customers/delete/<pk>", views.CustomerDeleteView.as_view(), name="customer_delete"),
