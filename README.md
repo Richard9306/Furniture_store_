@@ -27,12 +27,12 @@ The project is created as part of training and expanding knowledge about Django 
 
 
 ## Screenshots
-![Example screenshot](https://github.com/Richard9306/Furniture_store_/blob/master/my_store/static/img/prtsc1.png)
-![Example screenshot](https://github.com/Richard9306/Furniture_store_/blob/master/my_store/static/img/prtsc2.png)
+![Example screenshot](my_store/static/my_store/img/prtsc1.png)
+![Example screenshot](my_store/static/my_store/img/prtsc2.png)
 
 
 ## Setup
-Project requirements/dependencies are listed in the [requirements.txt](https://github.com/Richard9306/Furniture_store_/blob/develop/requirements.txt) file.
+Project requirements/dependencies are listed in the [requirements.txt](requirements.txt) file.
 
 ## Project Status
 Project is:  _in progress_ 
