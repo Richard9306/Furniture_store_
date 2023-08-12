@@ -88,7 +88,7 @@ class CustomerUpdateView(LoginRequiredMixin, UpdateView):
     template_name = "customer_update.html"
     model = models.Customers
     form_class = forms.CustomerUpdateForm
-    success_url = reverse_lazy("customers_read")
+    success_url = reverse_lazy("hello")
     permission_required = "my_store.change_customers"
 
     def get(self, request, *args, **kwargs):
@@ -109,8 +109,27 @@ class CustomerUpdateView(LoginRequiredMixin, UpdateView):
         return super().post(request, **kwargs)
 
 
-class CustomerDeleteView(PermissionRequiredMixin, DeleteView):
+class CustomerDeleteView(LoginRequiredMixin, DeleteView):
     template_name = "customer_delete.html"
     model = models.Customers
-    success_url = reverse_lazy("customers_read")
+    success_url = reverse_lazy("hello")
     permission_required = "my_store.delete_customers", "my_store.delete_user"
+
+    # def get(self, request, *args, **kwargs):
+    #     self.object = self.get_object()
+    #
+    #     context = self.get_context_data(object=self.object)
+    #     return self.render_to_response(context)
+    def post(self, request, *args, **kwargs):
+        # Set self.object before the usual form processing flow.
+        # Inlined because having DeletionMixin as the first base, for
+        # get_success_url(), makes leveraging super() with ProcessFormView
+        # overly complex.
+        self.object = self.get_object()
+        print(self.object)
+        print(dir(self.object))
+        form = self.get_form()
+        if form.is_valid():
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
