@@ -1,6 +1,4 @@
 
-A
-my_store/forms.py,3\6\36330a1b4817af16378c40c1e07e838c149a2ee1
 i
 9my_store/templates/registration/password_change_done.html,4\5\45e3cb30555e73b6de257e00a489fd7c069160b2
 [

@@ -1,6 +1,4 @@
 
-A
-my_store/forms.py,3\6\36330a1b4817af16378c40c1e07e838c149a2ee1
 [
 +my_store/templates/registration/logout.html,e\9\e94a567ad58dd03b39fa2e7dd2d711892631725e
 i

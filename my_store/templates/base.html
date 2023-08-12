@@ -15,7 +15,7 @@
   </head>
   <body class="bg-body-tertiary m-0 d-flex">
    
-    <header>
+    <header class="mb-3">
       <nav class="navbar p-2 navbar-expand-lg">
         <a class="navbar-brand mx-auto mx-lg-2 " href="{% url 'hello' %}" ><img class="mx-1 d-inline-block align-bottom" src="{% static 'my_store/img/stolik.png' %}" alt="logo"><span>Solidne<b>Meble</b>.pl</span> </a>
         <form class="form-inline  d-flex mx-auto  w-50 ">
@@ -30,10 +30,19 @@
             id="usermenu" href="#"><img src="{% static 'my_store/img/user.png' %}" alt="użytkownik"></a>
             <div class="dropdown-menu "  aria-labelledby="usermenu">
               {% if user.is_authenticated %}
+              <span class="dropdown-item text-right">
+                {% if user.first_name and user.last_name %}
+                {{ user.first_name }} {{ user.last_name }}
+                {% else %}
+                {{ user.username }}
+                {% endif %}
+              </span>
+              <div class="dropdown-divider"></div>
               {% if not user.is_superuser %}
-              <a class="dropdown-item text-right" href="{% url 'customer_update' pk=user.customers.id%}">Uzupełnij dane kontaktowe</a>
+              <a class="dropdown-item text-right" href="{% url 'customer_update' pk=user.customers.id %}">Uzupełnij dane kontaktowe</a>
               {% endif %}
               <a class="dropdown-item text-right" href="{% url 'password_change' %}">Zmień hasło</a>
+              <a class="dropdown-item text-right" href="{% url 'customer_delete' pk=user.customers.id %}">Usuń konto</a>
               <a class="dropdown-item text-right" href="{% url 'logout' %}">Wyloguj</a>
               {% else %}
               <a class="dropdown-item " href="{% url 'login' %}">Zaloguj się</a>
