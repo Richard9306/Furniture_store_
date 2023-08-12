@@ -1,6 +1,4 @@
 
-9
-	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 A
 my_store/forms.py,3\6\36330a1b4817af16378c40c1e07e838c149a2ee1
 i
