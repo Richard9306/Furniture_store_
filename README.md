@@ -49,6 +49,7 @@ To do:
 - Add email subscriptions
 
 ## Acknowledgements
+- This project was inspired among others by [meble.pl](https://www.meble.pl/)
 - This README was inspired by [@flynerdpl](https://www.flynerd.pl/) 
 - This README was based on [README-cheatsheet](https://github.com/ritaly/README-cheatsheet/blob/master/README.md?plain=1)
 

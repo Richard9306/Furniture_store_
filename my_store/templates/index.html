@@ -1,194 +1,190 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
 
-<!--<h1> {% if user.is_authenticated %}{% if user.first_name %} {{ user.first_name}}-->
-<!--    {% else %} {{ user.username}}{% endif %}{% else %} Przyjacielu{% endif %}, <br /> Witaj w moim pierwszym sklepie !</h1>-->
+  <section>
+          <div id="Captions" class="carousel slide m-2 " data-bs-ride="carousel" >
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#Captions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#Captions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#Captions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+              <button type="button" data-bs-target="#Captions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+            </div>
+            <div class="carousel-inner ">
+              <div class="carousel-item active h-100" >
+                <img src="{% static 'my_store/img/furniture-998265_1280.jpg' %}" class="d-block w-100 h-100 " alt="łazienka">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Pierwszy slajd</h5>
+                  <p>Kilka słów wprowadzających do tematu.</p>
+                  <div class="licence">
+                    Obraz <a href="https://pixabay.com/pl/users/newhouse-1160730/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=998265"> chien than</a> z <a href="https://pixabay.com/pl//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=998265"> Pixabay</a>
+                  </div>
 
-
-<section>
-        <div id="Captions" class="carousel slide m-2 " data-bs-ride="carousel" >
-          <div class="carousel-indicators">
-            <button type="button" data-bs-target="#Captions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#Captions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#Captions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            <button type="button" data-bs-target="#Captions" data-bs-slide-to="3" aria-label="Slide 4"></button>
-          </div>
-          <div class="carousel-inner ">
-            <div class="carousel-item active h-100" >
-
-              <img src="static/img/furniture-998265_1280.jpg" class="d-block w-100 h-100 " alt="łazienka">
-              <div class="carousel-caption d-none d-md-block">
-                <h5>Pierwszy slajd</h5>
-                <p>Kilka słów wprowadzających do tematu.</p>
-                <div class="licence">
-                  Obraz <a href="https://pixabay.com/pl/users/newhouse-1160730/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=998265"> chien than</a> z <a href="https://pixabay.com/pl//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=998265"> Pixabay</a>
                 </div>
+              </div>
+              <div class="carousel-item h-100">
+                <img src="{% static 'my_store/img/home-1622401_1920.jpg' %}" class="d-block w-100 h-100" alt="salon">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Drugi slajd</h5>
+                  <p>Kilka słów wprowadzających do tematu.</p>
+                  <div class="licence">
+                    Obraz <a href="https://pixabay.com/pl/users/leemelina08-2806126/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1622401"> leemelina08</a> z <a href="https://pixabay.com/pl//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1622401"> Pixabay</a>
+                  </div>
 
+                </div>
+              </div>
+              <div class="carousel-item h-100">
+                <img src="{% static 'my_store/img/kitchen-2165756_1920.jpg' %}" class="d-block w-100 h-100" alt="kuchnia">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Trzeci slajd</h5>
+                  <p>Kilka słów wprowadzających do tematu.</p>
+                  <div class="licence">
+                    Obraz <a href="https://pixabay.com/pl/users/skitterphoto-324082/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=2165756"> Rudy and Peter Skitterians</a> z <a href="https://pixabay.com/pl//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=2165756"> Pixabay</a>
+                  </div>
+
+                </div>
+              </div>
+              <div class="carousel-item h-100">
+                <img src="{% static 'my_store/img/home-2486092_1280.jpg' %}" class="d-block w-100 h-100" alt="kuchnia">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Czwarty slajd</h5>
+                  <p>Kilka słów wprowadzających do tematu.</p>
+                  <div class="licence">
+                    Obraz <a href="https://pixabay.com/pl/users/user32212-763448/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=2486092"> user32212</a> z <a href="https://pixabay.com/pl//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=2486092"> Pixabay</a>
+                  </div>
+
+                </div>
               </div>
             </div>
-            <div class="carousel-item h-100">
-              <img src="static/img/home-1622401_1920.jpg" class="d-block w-100 h-100" alt="salon">
-              <div class="carousel-caption d-none d-md-block">
-                <h5>Drugi slajd</h5>
-                <p>Kilka słów wprowadzających do tematu.</p>
-                <div class="licence">
-                  Obraz <a href="https://pixabay.com/pl/users/leemelina08-2806126/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1622401"> leemelina08</a> z <a href="https://pixabay.com/pl//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1622401"> Pixabay</a>
-                </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#Captions" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#Captions" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </section>
+  <section>
+          <div class="container mw-100 ">
+            <header>
+              <h1 class="text-center my-4 h4">Popularne kategorie</h1>
+            </header>
+            <div class="row">
+              <div class=" col-4 col-md-2 mb-5 ">
+                <a href="#"> <img src="{% static 'my_store/img/placeholder.png' %}" alt="" class="w-100 "></a>
+                <h3 class="h5 text-center">Łóżka</h3>
+              </div>
+              <div class="col-4 col-md-2 mb-5 ">
+                <a href="#"> <img src="{% static 'my_store/img/placeholder.png' %}" alt="" class="w-100"></a>
+                <h3 class="h5 text-center">Szafy</h3>
+              </div>
+              <div class="col-4 col-md-2 mb-5 ">
+                <a href="#"> <img src="{% static 'my_store/img/placeholder.png' %}" alt="" class="w-100"></a>
+                <h3 class="h5 text-center">Komody</h3>
+              </div>
+              <div class="col-4 col-md-2 mb-5 ">
+                <a href="#"> <img src="{% static 'my_store/img/placeholder.png' %}" alt="" class="w-100"></a>
+                <h3 class="h5 text-center">Stoły</h3>
+              </div>
+              <div class="col-4 col-md-2 mb-5 ">
+                <a href="#"> <img src="{% static 'my_store/img/placeholder.png' %}" alt="" class="w-100"></a>
+                <h3 class="h5 text-center">Sofy i kanapy</h3>
+              </div>
+              <div class="col-4 col-md-2 mb-5 ">
+                <a href="#"> <img src="{% static 'my_store/img/placeholder.png' %}" alt="" class="w-100"></a>
+                <h3 class="h5 text-center">Fotele</h3>
+              </div>
 
+              <div class="col-4 col-md-2 mb-5 ">
+                <a href="#"> <img src="{% static 'my_store/img/placeholder.png' %}" alt="" class="w-100"></a>
+                <h3 class="h5 text-center">Stoliki kawowe</h3>
+              </div>
+              <div class="col-4 col-md-2 mb-5 ">
+                <a href="#"> <img src="{% static 'my_store/img/placeholder.png' %}" alt="" class="w-100"></a>
+                <h3 class="h5 text-center">Stoły</h3>
+              </div>
+              <div class="col-4 col-md-2 mb-5 ">
+                <a href="#"> <img src="{% static 'my_store/img/placeholder.png' %}" alt="" class="w-100"></a>
+                <h3 class="h5 text-center">Krzesła</h3>
+              </div>
+              <div class="col-4 col-md-2 mb-5 ">
+                <a href="#"> <img src="{% static 'my_store/img/placeholder.png' %}" alt="" class="w-100"></a>
+                <h3 class="h5 text-center">Szafki RTV</h3>
+              </div>
+              <div class="col-4 col-md-2 mb-5 ">
+                <a href="#"> <img src="{% static 'my_store/img/placeholder.png' %}" alt="" class="w-100"></a>
+                <h3 class="h5 text-center">Szafki nocne</h3>
+              </div>
+              <div class="col-4 col-md-2 mb-5">
+                <a href="#"> <img src="{% static 'my_store/img/placeholder.png' %}" alt="" class="w-100"></a>
+                <h3 class="h5 text-center">Regały</h3>
+              </div>
+
+              <div class="col-4 col-md-2 mb-5 ">
+                <a href="#"> <img src="{% static 'my_store/img/placeholder.png' %}" alt="" class="w-100"></a>
+                <h3 class="h5 text-center">Meblościanki</h3>
+              </div>
+              <div class="col-4 col-md-2 mb-5 ">
+                <a href="#"> <img src="{% static 'my_store/img/placeholder.png' %}" alt="" class="w-100"></a>
+                <h3 class="h5 text-center">Półki</h3>
+              </div>
+              <div class="col-4 col-md-2 mb-5 ">
+                <a href="#"> <img src="{% static 'my_store/img/placeholder.png' %}" alt="" class="w-100"></a>
+                <h3 class="h5 text-center">Hokery</h3>
+              </div>
+              <div class="col-4 col-md-2 mb-5 ">
+                <a href="#"> <img src="{% static 'my_store/img/placeholder.png' %}" alt="" class="w-100"></a>
+                <h3 class="h5 text-center">Biurka</h3>
+              </div>
+              <div class="col-4 col-md-2 mb-5 ">
+                <a href="#"> <img src="{% static 'my_store/img/placeholder.png' %}" alt="" class="w-100"></a>
+                <h3 class="h5 text-center">Fotele biurowe</h3>
+              </div>
+              <div class="col-4 col-md-2 mb-5 ">
+                <a href="#"> <img src="{% static 'my_store/img/placeholder.png' %}" alt="" class="w-100"></a>
+                <h3 class="h5 text-center">Zestawy mebli</h3>
               </div>
             </div>
-            <div class="carousel-item h-100">
-              <img src="static/img/kitchen-2165756_1920.jpg" class="d-block w-100 h-100" alt="kuchnia">
-              <div class="carousel-caption d-none d-md-block">
-                <h5>Trzeci slajd</h5>
-                <p>Kilka słów wprowadzających do tematu.</p>
-                <div class="licence">
-                  Obraz <a href="https://pixabay.com/pl/users/skitterphoto-324082/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=2165756"> Rudy and Peter Skitterians</a> z <a href="https://pixabay.com/pl//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=2165756"> Pixabay</a>
-                </div>
+
+          </div>
+        </section>
+  <section>
+          <div class="container mw-100 mt-4" >
+
+            <div class="row">
+              <div class=" col-4  mb-5 ">
+                <a href="#"> <img src="{% static 'my_store/img/placeholder.png' %}" alt="" class="myheight w-100"></a>
 
               </div>
-            </div>
-            <div class="carousel-item h-100">
-              <img src="static/img/home-2486092_1280.jpg" class="d-block w-100 h-100" alt="kuchnia">
-              <div class="carousel-caption d-none d-md-block">
-                <h5>Czwarty slajd</h5>
-                <p>Kilka słów wprowadzających do tematu.</p>
-                <div class="licence">
-                  Obraz <a href="https://pixabay.com/pl/users/user32212-763448/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=2486092"> user32212</a> z <a href="https://pixabay.com/pl//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=2486092"> Pixabay</a>
-                </div>
+              <div class="col-4  mb-5 ">
+                <a href="#"> <img src="{% static 'my_store/img/placeholder.png' %}" alt="" class="myheight w-100"></a>
 
               </div>
-            </div>
-          </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#Captions" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#Captions" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
-      </section>
-<section>
-        <div class="container mw-100 ">
-          <header>
-            <h1 class="text-center my-4 h4">Popularne kategorie</h1>
-          </header>
-          <div class="row">
-            <div class=" col-4 col-md-2 mb-5 ">
-              <a href="#"> <img src="static/img/placeholder.png" alt="" class="w-100 "></a>
-              <h3 class="h5 text-center">Łóżka</h3>
-            </div>
-            <div class="col-4 col-md-2 mb-5 ">
-              <a href="#"> <img src="static/img/placeholder.png" alt="" class="w-100"></a>
-              <h3 class="h5 text-center">Szafy</h3>
-            </div>
-            <div class="col-4 col-md-2 mb-5 ">
-              <a href="#"> <img src="static/img/placeholder.png" alt="" class="w-100"></a>
-              <h3 class="h5 text-center">Komody</h3>
-            </div>
-            <div class="col-4 col-md-2 mb-5 ">
-              <a href="#"> <img src="static/img/placeholder.png" alt="" class="w-100"></a>
-              <h3 class="h5 text-center">Stoły</h3>
-            </div>
-            <div class="col-4 col-md-2 mb-5 ">
-              <a href="#"> <img src="static/img/placeholder.png" alt="" class="w-100"></a>
-              <h3 class="h5 text-center">Sofy i kanapy</h3>
-            </div>
-            <div class="col-4 col-md-2 mb-5 ">
-              <a href="#"> <img src="static/img/placeholder.png" alt="" class="w-100"></a>
-              <h3 class="h5 text-center">Fotele</h3>
-            </div>
+              <div class="col-4  mb-5 ">
+                <a href="#"> <img src="{% static 'my_store/img/placeholder.png' %}" alt="" class="myheight w-100"></a>
 
-            <div class="col-4 col-md-2 mb-5 ">
-              <a href="#"> <img src="static/img/placeholder.png" alt="" class="w-100"></a>
-              <h3 class="h5 text-center">Stoliki kawowe</h3>
-            </div>
-            <div class="col-4 col-md-2 mb-5 ">
-              <a href="#"> <img src="static/img/placeholder.png" alt="" class="w-100"></a>
-              <h3 class="h5 text-center">Stoły</h3>
-            </div>
-            <div class="col-4 col-md-2 mb-5 ">
-              <a href="#"> <img src="static/img/placeholder.png" alt="" class="w-100"></a>
-              <h3 class="h5 text-center">Krzesła</h3>
-            </div>
-            <div class="col-4 col-md-2 mb-5 ">
-              <a href="#"> <img src="static/img/placeholder.png" alt="" class="w-100"></a>
-              <h3 class="h5 text-center">Szafki RTV</h3>
-            </div>
-            <div class="col-4 col-md-2 mb-5 ">
-              <a href="#"> <img src="static/img/placeholder.png" alt="" class="w-100"></a>
-              <h3 class="h5 text-center">Szafki nocne</h3>
-            </div>
-            <div class="col-4 col-md-2 mb-5">
-              <a href="#"> <img src="static/img/placeholder.png" alt="" class="w-100"></a>
-              <h3 class="h5 text-center">Regały</h3>
-            </div>
-
-            <div class="col-4 col-md-2 mb-5 ">
-              <a href="#"> <img src="static/img/placeholder.png" alt="" class="w-100"></a>
-              <h3 class="h5 text-center">Meblościanki</h3>
-            </div>
-            <div class="col-4 col-md-2 mb-5 ">
-              <a href="#"> <img src="static/img/placeholder.png" alt="" class="w-100"></a>
-              <h3 class="h5 text-center">Półki</h3>
-            </div>
-            <div class="col-4 col-md-2 mb-5 ">
-              <a href="#"> <img src="static/img/placeholder.png" alt="" class="w-100"></a>
-              <h3 class="h5 text-center">Hokery</h3>
-            </div>
-            <div class="col-4 col-md-2 mb-5 ">
-              <a href="#"> <img src="static/img/placeholder.png" alt="" class="w-100"></a>
-              <h3 class="h5 text-center">Biurka</h3>
-            </div>
-            <div class="col-4 col-md-2 mb-5 ">
-              <a href="#"> <img src="static/img/placeholder.png" alt="" class="w-100"></a>
-              <h3 class="h5 text-center">Fotele biurowe</h3>
-            </div>
-            <div class="col-4 col-md-2 mb-5 ">
-              <a href="#"> <img src="static/img/placeholder.png" alt="" class="w-100"></a>
-              <h3 class="h5 text-center">Zestawy mebli</h3>
-            </div>
-          </div>
-
-        </div>
-      </section>
-<section>
-        <div class="container mw-100 mt-4" >
-
-          <div class="row">
-            <div class=" col-4  mb-5 ">
-              <a href="#"> <img src="static/img/placeholder.png" alt="" class="myheight w-100"></a>
-
-            </div>
-            <div class="col-4  mb-5 ">
-              <a href="#"> <img src="static/img/placeholder.png" alt="" class="myheight w-100"></a>
-
-            </div>
-            <div class="col-4  mb-5 ">
-              <a href="#"> <img src="static/img/placeholder.png" alt="" class="myheight w-100"></a>
+              </div>
 
             </div>
 
           </div>
+        </section>
+  <section>
+          <div class="container mw-100 mt-4" >
 
-        </div>
-      </section>
-<section>
-        <div class="container mw-100 mt-4" >
-
-          <div class="row">
-            <div class="  mb-5 ">
-              <a href="#"> <img src="static/img/placeholder.png" alt="" class="myheight w-100"></a>
+            <div class="row">
+              <div class="  mb-5 ">
+                <a href="#"> <img src="{% static 'my_store/img/placeholder.png' %}" alt="" class="myheight w-100"></a>
 
 
+
+              </div>
 
             </div>
-
           </div>
-        </div>
-      </section>
+        </section>
 
 {% endblock %}
