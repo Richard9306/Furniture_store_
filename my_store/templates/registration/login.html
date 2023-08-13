@@ -4,12 +4,13 @@
     <h1>Logowanie:</h1>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        <div>{{ form.as_p }}</div>
+        <div class="text-center mt-2"><a class="text-decoration-none " href="{% url 'password_reset' %}">Nie pamiętam hasła </a></div>
         <input type="submit" value="Zaloguj" class="btn btn-outline-success">
     </form>
     <div class="mt-4">
-        Nie pamiętasz hasła? <a href="{% url 'password_reset' %}">Resetuj hasło</a><br />
-        Nie masz jeszcze u nas konta? <a href="{% url 'registration' %}">Załóż konto</a>
+
+        Nie masz jeszcze u nas konta? <a class="text-decoration-none" href="{% url 'registration' %}">Załóż konto</a>
     </div>
 </div>
 {% endblock %}

@@ -5,6 +5,10 @@ body
     min-height: 100vh;
    
 }
+main
+{
+    flex-grow: 1;
+}
 .navbar-brand img
 {
     width: 50px;
@@ -24,10 +28,10 @@ body
     border-bottom: 3px solid #1EBE53;
 
 }
-.navbar-nav li:hover >.dropdown-menu
-{
-    display: block;
-}
+/*.navbar-nav li:hover >.dropdown-menu*/
+/*{*/
+/*    display: block;*/
+/*}*/
 .navbar-nav
 {
     min-height: 43px;
@@ -41,8 +45,6 @@ body
 .btn-outline-success:hover
 {
     background-color: #1EBE53 !important;
-
-
 }
 .carousel-inner
 {
@@ -60,9 +62,4 @@ body
 .myheight
 {
     height: 500px;
-}
-main
-{
-    flex-grow: 1;
-
 }
