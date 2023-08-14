@@ -28,10 +28,6 @@ main
     border-bottom: 3px solid #1EBE53;
 
 }
-/*.navbar-nav li:hover >.dropdown-menu*/
-/*{*/
-/*    display: block;*/
-/*}*/
 .navbar-nav
 {
     min-height: 43px;
@@ -46,6 +42,7 @@ main
 {
     background-color: #1EBE53 !important;
 }
+
 .carousel-inner
 {
     height: 600px;
@@ -63,3 +60,4 @@ main
 {
     height: 500px;
 }
+

@@ -1,4 +1,4 @@
-
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.views import View
 from django.contrib.auth.views import (
@@ -14,7 +14,7 @@ from django.contrib.auth.views import (
 from django.contrib.auth import login
 from django.views.generic import UpdateView, DeleteView, CreateView
 from django.urls import reverse_lazy
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from my_store import forms, models
 
@@ -74,14 +74,6 @@ class SubmittableLogoutView(LogoutView):
     template_name = "registration/logout.html"
 
 
-class CustomerRead(View):
-    def get(self, request):
-        customers = models.Customers.objects.all()
-        return render(
-            request,
-            template_name="customers_read.html",
-            context={"customers": customers},
-        )
 
 
 class CustomerUpdateView(LoginRequiredMixin, UpdateView):
@@ -115,21 +107,8 @@ class CustomerDeleteView(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy("hello")
     permission_required = "my_store.delete_customers", "my_store.delete_user"
 
-    # def get(self, request, *args, **kwargs):
-    #     self.object = self.get_object()
-    #
-    #     context = self.get_context_data(object=self.object)
-    #     return self.render_to_response(context)
-    def post(self, request, *args, **kwargs):
-        # Set self.object before the usual form processing flow.
-        # Inlined because having DeletionMixin as the first base, for
-        # get_success_url(), makes leveraging super() with ProcessFormView
-        # overly complex.
-        self.object = self.get_object()
-        print(self.object)
-        print(dir(self.object))
-        form = self.get_form()
-        if form.is_valid():
-            return self.form_valid(form)
-        else:
-            return self.form_invalid(form)
+    def form_valid(self, form):
+        success_url = self.get_success_url()
+        self.object.user.delete()
+        self.object.delete()
+        return HttpResponseRedirect(success_url)

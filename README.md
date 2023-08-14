@@ -50,6 +50,7 @@ To do:
 
 ## Acknowledgements
 - This project was inspired among others by [meble.pl](https://www.meble.pl/)
+- Cookies bar was borrowed from [skrypt-cookies.pl](https://skrypt-cookies.pl/ciasteczka-darmowy-skrypt-na-strone-www)
 - This README was inspired by [@flynerdpl](https://www.flynerd.pl/) 
 - This README was based on [README-cheatsheet](https://github.com/ritaly/README-cheatsheet/blob/master/README.md?plain=1)
 

@@ -32,26 +32,16 @@ d
 4my_store/templates/registration/password_change.html,a\c\ac2a7e9444018b37d32576d878b0d05216ee1bb6
 M
 my_store/templates/index.html,c\7\c77fbd7a94da368ca4824011db9908a4ed3491ed
-9
-	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
-B
-my_store/models.py,3\9\39b5719766c1a10b2874a951a797c123fabfcfca
 S
 #.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
 ]
 -.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
-V
-&my_store/templates/customers_read.html,6\3\63ec7b157b98f15924b7593758c7d17759eeaa68
-A
-my_store/views.py,7\0\7025b7bf4973d72c77d4d4b0c3411f49f897d984
-A
-my_store/forms.py,3\6\36330a1b4817af16378c40c1e07e838c149a2ee1
-G
-furniture_store/urls.py,0\6\06e44748ca74716592ec9b41447e09ab16f3e270
 W
 'my_store/templates/customer_update.html,5\1\51b365bd53d6f45f6bf7383f7b525784de942686
 W
 'my_store/templates/customer_delete.html,d\2\d2130da9a52f6b1545b5b6aaf837531348fa1fdb
+Z
+*my_store/templates/registration/login.html,e\c\ec5544c5cb0db7f993889d9057d93b6e208f0efc
