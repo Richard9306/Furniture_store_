@@ -1,16 +1,21 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
-<div class="container">
-    <h1>Logowanie:</h1>
-    <form method="post">
-        {% csrf_token %}
-        <div>{{ form.as_p }}</div>
-        <div class="text-center mt-2"><a class="text-decoration-none " href="{% url 'password_reset' %}">Nie pamiętam hasła </a></div>
-        <input type="submit" value="Zaloguj" class="btn btn-outline-success">
-    </form>
-    <div class="mt-4">
+<div class="container ">
+    <div class="myborder w-50 m-auto pt-5 px-5 pb-2  rounded-2">
+        <h3 class="mb-5">Logowanie:</h3>
+        <form method="post">
+            {% csrf_token %}
+            <div>
+                {{ form.as_p }}<img class=" text-end float-end password_visibility" id="toggle_password" src="{% static 'my_store/img/iconmonstr-eye-10-24.png' %}" alt="toggle password">
+            </div>
+            <div class="text-end mt-2"><a class="text-decoration-none" href="{% url 'password_reset' %}">Nie pamiętam hasła </a></div>
+            <input type="submit" value="Zaloguj" class="btn btn-success">
+        </form>
+        <div class="mt-4">
 
-        Nie masz jeszcze u nas konta? <a class="text-decoration-none" href="{% url 'registration' %}">Załóż konto</a>
+            Nie masz jeszcze u nas konta? <a class="text-decoration-none" href="{% url 'registration' %}">Załóż konto</a>
+        </div>
     </div>
 </div>
 {% endblock %}

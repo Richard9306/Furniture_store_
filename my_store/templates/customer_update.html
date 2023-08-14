@@ -1,12 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Edycja klienta {{ object.user.username }} o ID: {{ object.user.id }}</h1>
-<form method="post">
-  {% csrf_token %}
-
-  {{ form.as_p }}
-
-
-  <input type="submit" value="Potwierdź" class="btn btn-outline-success">
-</form>
+<div class="container ">
+    <div class=" w-50 m-auto pt-5 px-5 pb-2 myborder rounded-2">
+        <h3 class="mb-5">{{ object.user.username }}, zauktualizuj swoje dane kontaktowe:</h3>
+        <form method="post">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <input type="submit" value="Potwierdź" class="btn btn-outline-success">
+        </form>
+    </div>
+</div>
 {% endblock %}
