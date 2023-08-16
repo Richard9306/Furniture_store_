@@ -1,21 +1,7 @@
 
-w
-G.idea/sonarlint/issuestore/3/a/3a1458adf78214eed1c2bef1ff11e4ecbebe0929,e\9\e930cd6e8d67c0c722a42ecb39730f593cb4f4da
-Å
-Q.idea/sonarlint/securityhotspotstore/3/a/3a1458adf78214eed1c2bef1ff11e4ecbebe0929,e\8\e88a1a063ab3fd325b03e7183ba534a8d29f00f6
 :
 
 db.sqlite3,9\0\907ac5e500f6286c18519bf943721af4c97e50d5
-Å
-Q.idea/sonarlint/securityhotspotstore/4/5/45e3cb30555e73b6de257e00a489fd7c069160b2,a\c\ac743931b65cf9525a79246b4ff58181b1eb6098
-Å
-Q.idea/sonarlint/securityhotspotstore/e/9/e94a567ad58dd03b39fa2e7dd2d711892631725e,4\8\48bf510cd55f3a5bbc1eb1196d14bcc9061088a9
-w
-G.idea/sonarlint/issuestore/e/9/e94a567ad58dd03b39fa2e7dd2d711892631725e,5\2\52b7695bf819cf0ea0cb89bc94d4a5896f1c075b
-w
-G.idea/sonarlint/issuestore/4/5/45e3cb30555e73b6de257e00a489fd7c069160b2,8\c\8c64614c7130ab690a4477e0b6b6b700474bdc97
-M
-my_store/templates/index.html,c\7\c77fbd7a94da368ca4824011db9908a4ed3491ed
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
@@ -29,3 +15,29 @@ S
 Q.idea/sonarlint/securityhotspotstore/e/c/ec5544c5cb0db7f993889d9057d93b6e208f0efc,9\7\970f5ec2c8ed19b1670463164ed360f1aa60c76f
 w
 G.idea/sonarlint/issuestore/e/c/ec5544c5cb0db7f993889d9057d93b6e208f0efc,b\8\b80874f5221131823775ca10376ba429c6b3004a
+B
+my_store/models.py,3\9\39b5719766c1a10b2874a951a797c123fabfcfca
+G
+furniture_store/urls.py,0\6\06e44748ca74716592ec9b41447e09ab16f3e270
+A
+my_store/views.py,7\0\7025b7bf4973d72c77d4d4b0c3411f49f897d984
+A
+my_store/forms.py,3\6\36330a1b4817af16378c40c1e07e838c149a2ee1
+K
+furniture_store/settings.py,d\d\dd725d3f8dad0993c6b03e256005ac6c8d10b2c4
+Y
+)my_store/static/my_store/my_js_scripts.js,9\2\92de27c2797a617bd3d7a9108f839a12bf6a3005
+h
+8my_store/templates/registration/password_reset_done.html,5\9\593fc6bf4b17eca857d7995cae2efe89fbc829d1
+[
++my_store/templates/registration/logout.html,e\9\e94a567ad58dd03b39fa2e7dd2d711892631725e
+l
+<my_store/templates/registration/password_reset_complete.html,3\a\3a1458adf78214eed1c2bef1ff11e4ecbebe0929
+d
+4my_store/templates/registration/password_change.html,a\c\ac2a7e9444018b37d32576d878b0d05216ee1bb6
+i
+9my_store/templates/registration/password_change_done.html,4\5\45e3cb30555e73b6de257e00a489fd7c069160b2
+k
+;my_store/templates/registration/password_reset_confirm.html,0\2\0234b361a6049767eec149456b939c072bdb0425
+[
++my_store/templates/registration/signup.html,1\6\1660eced9beb806856686a6b4e4a5dba834ed7d3
