@@ -6,6 +6,7 @@ from django.contrib.auth.forms import (
     UsernameField, PasswordResetForm, SetPasswordForm,
 )
 from django import forms
+from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator
 
 from my_store import models
@@ -14,16 +15,38 @@ import datetime
 
 
 class UserSignUpForm(UserCreationForm):
+
     class Meta:
         model = User
-        fields = ["username"]
+        fields = ["email", "username"]
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if User.objects.filter(email=email).exists():
+            raise ValidationError("Podany adres email jest już zajęty.")
+        return email
+    def clean_username(self):
+        """Reject usernames that differ only in case."""
+        username = self.cleaned_data.get("username")
+        if username and self._meta.model.objects.filter(username__iexact=username).exists():
+            raise ValidationError("Podany login jest już zajęty.")
+        return username
 
     username = UsernameField(
-        label="*Pola obowiązkowe",
+        label="",
         widget=forms.TextInput(
             attrs={"class": "form-control", "placeholder": "Login*", "autofocus": True}
         ),
         help_text="Dozwolona ilość znaków to: 150. Tylko litery, cyfry i @/./+/-/_.",
+        error_messages=""
+    )
+
+    email = forms.EmailField(
+        label="",
+        widget=forms.EmailInput(
+            attrs={"class": "form-control", "placeholder": "Adres email*"}
+        ),
+        required=True
     )
     password1 = forms.CharField(
         label="",
@@ -51,7 +74,7 @@ class UserSignUpForm(UserCreationForm):
     )
     first_name = forms.CharField(widget=forms.HiddenInput(), required=False)
     last_name = forms.CharField(widget=forms.HiddenInput(), required=False)
-    email = forms.EmailField(widget=forms.HiddenInput(), required=False)
+
     phone_nr = forms.CharField(widget=forms.HiddenInput(), required=False)
     birth_date = forms.DateField(widget=forms.HiddenInput(), required=False)
     country = forms.CharField(
@@ -64,7 +87,6 @@ class UserSignUpForm(UserCreationForm):
     flat_nr = forms.IntegerField(widget=forms.HiddenInput(), required=False)
     error_messages = {
         "password_mismatch": "Podane hasła różnią się !",
-        "unique": "Wybrany login jest już zajęty.",
     }
 
     def save(self, commit=True):
@@ -195,7 +217,6 @@ class SubmittableSetPasswordForm(SetPasswordForm):
     )
 
 
-
 class CustomerUpdateForm(forms.ModelForm):
     class Meta:
         model = models.Customers
@@ -215,41 +236,44 @@ class CustomerUpdateForm(forms.ModelForm):
         ]
         widgets = {"user": forms.HiddenInput()}
 
-    TODAY = datetime.datetime.today().date()
     first_name = forms.CharField(
-        label="",
-        widget=forms.TextInput(attrs={"class": "form-control", "placeholder": "Imię*"}),
+        label="Imie:",
+        widget=forms.TextInput(attrs={"class": "form-control"}),
         required=True,
     )
     last_name = forms.CharField(
-        label="",
+        label="Nazwisko:",
         widget=forms.TextInput(
-            attrs={"class": "form-control", "placeholder": "Nazwisko*"}
+            attrs={"class": "form-control"}
         ),
         required=True,
     )
     email = forms.EmailField(
-        label="",
-        widget=forms.EmailInput(
-            attrs={"class": "form-control", "placeholder": "E-mail*"}
+        label="Adres email:",
+        widget=forms.HiddenInput(
+            attrs={
+                "class": "form-control",
+                "readonly": "readonly",
+                }
         ),
         required=True,
     )
 
     phone_nr = forms.CharField(
         max_length=15,
-        label="",
+        label="Nr kontaktowy:",
         widget=forms.TextInput(
-            attrs={"class": "form-control", "placeholder": "Nr telefonu(+48)*"}
+            attrs={"class": "form-control"}
         ),
         required=True,
     )
+
+    TODAY = datetime.datetime.today().date()
     birth_date = forms.DateField(
-        label="",
+        label="Data urodzenia:",
         widget=forms.DateInput(
             attrs={
                 "class": "form-control",
-                "placeholder": "Data urodzenia(rrrr-mm-dd)*",
                 "max": TODAY,
                 "type": "date"
             }
@@ -258,11 +282,10 @@ class CustomerUpdateForm(forms.ModelForm):
     )
     country = forms.CharField(
         max_length=60,
-        label="",
-        widget=forms.TextInput(
+        label="Kraj",
+        widget=forms.HiddenInput(
             attrs={
                 "class": "form-control",
-                "placeholder": "Kraj*",
                 "readonly": "readonly",
             }
         ),
@@ -271,46 +294,46 @@ class CustomerUpdateForm(forms.ModelForm):
     )
     city = forms.CharField(
         max_length=45,
-        label="",
+        label="Miasto:",
         widget=forms.TextInput(
-            attrs={"class": "form-control", "placeholder": "Miasto*"}
+            attrs={"class": "form-control"}
         ),
         required=True,
     )
     postal_code = forms.CharField(
         max_length=6,
-        label="",
+        label="Kod pocztowy",
         widget=forms.TextInput(
-            attrs={"class": "form-control", "placeholder": "Kod pocztowy(xx-xxx)*"}
+            attrs={"class": "form-control", "placeholder": "00-000"}
         ),
         validators=[
             RegexValidator(
                 regex=r"\d{2}-\d{3}",
-                message="Poprawny format dla kodu pocztowego to: xx-xxx",
+                message="Niepoprawny format kodu pocztowego.",
             ),
         ],
         required=True,
     )
     street = forms.CharField(
         max_length=75,
-        label="",
+        label="Ulica:",
         widget=forms.TextInput(
-            attrs={"class": "form-control", "placeholder": "Ulica*"}
+            attrs={"class": "form-control"}
         ),
         required=True,
     )
     house_nr = forms.CharField(
         max_length=10,
-        label="",
+        label="Nr domu:",
         widget=forms.TextInput(
-            attrs={"class": "form-control", "placeholder": "Nr domu*"}
+            attrs={"class": "form-control"}
         ),
         required=True,
     )
     flat_nr = forms.IntegerField(
-        label="",
+        label="Nr mieszkania(opcjonalnie):",
         widget=forms.TextInput(
-            attrs={"class": "form-control", "placeholder": "Nr lokalu(opcjonalnie)"}
+            attrs={"class": "form-control"}
         ),
         required=False,
     )

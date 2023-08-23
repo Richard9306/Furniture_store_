@@ -17,6 +17,9 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from my_store import forms, models
+from django.db.models.signals import pre_save
+from django.dispatch import receiver
+from django.forms import ValidationError
 
 
 class HomeView(View):
@@ -29,6 +32,7 @@ class UserCreateView(CreateView):
     model = User
     form_class = forms.UserSignUpForm
     success_url = reverse_lazy("hello")
+
 
     def form_valid(self, form):
         valid = super().form_valid(form)
