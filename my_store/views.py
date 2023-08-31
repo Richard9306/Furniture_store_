@@ -11,16 +11,12 @@ from django.contrib.auth.views import (
     PasswordResetCompleteView,
     LoginView,
 )
-from django.contrib.auth import login
 from django.views.generic import UpdateView, DeleteView, CreateView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from my_store import forms, models
-from django.db.models.signals import pre_save
-from django.dispatch import receiver
-from django.forms import ValidationError
-
+from verify_email.email_handler import send_verification_email
 
 class HomeView(View):
     def get(self, request):
@@ -31,13 +27,12 @@ class UserCreateView(CreateView):
     template_name = "registration/signup.html"
     model = User
     form_class = forms.UserSignUpForm
-    success_url = reverse_lazy("hello")
-
+    success_url = reverse_lazy("home")
 
     def form_valid(self, form):
-        valid = super().form_valid(form)
-        login(self.request, self.object)
-        return valid
+        if form.is_valid():
+            inactive_user = send_verification_email(self.request, form)
+            return inactive_user
 
 
 class SubmittablePasswordChangeView(PasswordChangeView):
@@ -84,7 +79,7 @@ class CustomerUpdateView(LoginRequiredMixin, UpdateView):
     template_name = "customer_update.html"
     model = models.Customers
     form_class = forms.CustomerUpdateForm
-    success_url = reverse_lazy("hello")
+    success_url = reverse_lazy("customer_update_done")
     permission_required = "my_store.change_customers"
 
     def get(self, request, *args, **kwargs):
@@ -105,10 +100,15 @@ class CustomerUpdateView(LoginRequiredMixin, UpdateView):
         return super().post(request, **kwargs)
 
 
+class CustomerUpdateDoneView(View):
+    def get(self, request):
+        return render(request, template_name="customer_update_done.html")
+
+
 class CustomerDeleteView(LoginRequiredMixin, DeleteView):
     template_name = "customer_delete.html"
     model = models.Customers
-    success_url = reverse_lazy("hello")
+    success_url = reverse_lazy("customer_delete_done")
     permission_required = "my_store.delete_customers", "my_store.delete_user"
 
     def form_valid(self, form):
@@ -116,3 +116,8 @@ class CustomerDeleteView(LoginRequiredMixin, DeleteView):
         self.object.user.delete()
         self.object.delete()
         return HttpResponseRedirect(success_url)
+
+
+class CustomerDeleteDoneView(View):
+    def get(self, request):
+        return render(request, template_name="customer_delete_done.html")

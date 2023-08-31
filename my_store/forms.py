@@ -90,8 +90,8 @@ class UserSignUpForm(UserCreationForm):
     }
 
     def save(self, commit=True):
-        self.instance.is_active = True
         result = super().save(commit)
+        self.instance.save()
         phone_nr = self.cleaned_data["phone_nr"]
         birth_date = self.cleaned_data["birth_date"]
         country = self.cleaned_data["country"]
@@ -111,8 +111,7 @@ class UserSignUpForm(UserCreationForm):
             flat_nr=flat_nr,
             user=result,
         )
-        if commit:
-            customer.save()
+        customer.save()
         return result
 
 

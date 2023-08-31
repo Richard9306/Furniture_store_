@@ -34,6 +34,7 @@ EMAIL_PORT = "587"
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = "f0rt32t2@gmail.com"
 EMAIL_HOST_PASSWORD = "vcqfwiralnqzqody"
+PASSWORD_RESET_TIMEOUT_DAYS = 1
 
 
 # Application definition
@@ -45,8 +46,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
     "widget_tweaks",
+    "verify_email.apps.VerifyEmailConfig",
 ]
 
 MIDDLEWARE = [
@@ -136,6 +137,9 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-LOGIN_REDIRECT_URL = 'hello'
-LOGOUT_REDIRECT_URL = 'hello'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
+VERIFICATION_SUCCESS_TEMPLATE = None
 
+THOUSAND_SEPARATOR = ' '
+USE_THOUSAND_SEPARATOR = True
