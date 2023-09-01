@@ -29,10 +29,15 @@ class UserCreateView(CreateView):
     form_class = forms.UserSignUpForm
     success_url = reverse_lazy("home")
 
+
     def form_valid(self, form):
-        if form.is_valid():
-            inactive_user = send_verification_email(self.request, form)
-            return inactive_user
+        if self.request.method == "POST":
+            if form.is_valid():
+                # self.instance = self.request.user
+                inactive_user = send_verification_email(self.request, form)
+                return inactive_user
+        else:
+            return HttpResponseRedirect(self.success_url)
 
 
 class SubmittablePasswordChangeView(PasswordChangeView):

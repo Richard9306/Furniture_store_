@@ -14,16 +14,19 @@ The project is created as part of training and expanding knowledge about Django 
 
 
 ## Technologies Used
-- Python
-- Django
+- Python 3.10
+- Django 4.2.2
 - SQLite
-- Bootstrap
+- Bootstrap 5.3.0
+- JavaScript
 
 
 
 ## Features
-- Registration
+- Registration with email verification
+- Password reset with email
 - Login
+- CRUD for Customers
 
 
 ## Screenshots
@@ -35,14 +38,9 @@ The project is created as part of training and expanding knowledge about Django 
 Project requirements/dependencies are listed in the [requirements.txt](requirements.txt) file.
 
 ## Project Status
-Project is:  _in progress_ 
+Project is:  _in progress_
 
-## Room for Improvement
-Room for improvement:
-- Change all built-in texts for the user to Polish
-- Improve the readability of forms
-
-To do:
+## To do:
 - Add CRUD for Orders
 - Add searching
 - Add fitering
