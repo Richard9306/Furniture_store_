@@ -31,13 +31,10 @@ class UserCreateView(CreateView):
 
 
     def form_valid(self, form):
-        if self.request.method == "POST":
-            if form.is_valid():
-                # self.instance = self.request.user
-                inactive_user = send_verification_email(self.request, form)
-                return inactive_user
-        else:
-            return HttpResponseRedirect(self.success_url)
+        if form.is_valid():
+            inactive_user = send_verification_email(self.request, form)
+            return inactive_user
+
 
 
 class SubmittablePasswordChangeView(PasswordChangeView):

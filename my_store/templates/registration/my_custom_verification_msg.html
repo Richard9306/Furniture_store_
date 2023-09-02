@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+    <title>Aktywacja konta</title>
+
+    <style>
+        .format-font {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .my-container {
+            margin: 10px;
+            padding: 10px;
+            padding-top: 0px;
+            justify-content: center;
+            border-radius: 5px;
+            border: 1px solid rgb(204, 203, 203);
+            font-size: 16px;
+        }
+
+        .my-button {
+            padding: 10px;
+            padding-left: 35px;
+            padding-right: 35px;
+            background-color: #1EBE53;
+            color: white;
+            border-radius: 25px;
+            transition-duration: 500ms;
+            text-decoration: none;
+
+        }
+        .my-button:hover {
+            color: #1EBE53;
+            background-color: white;
+            border: 1px solid #1EBE53;
+            transition-duration: 200ms;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="my-container">
+
+        <div style="background-color: #1EBE53; border-radius: 15px;">
+            <h1 class="format-font" style="text-align: center; padding: 2px; color:white;">
+                Aktywacja konta
+            </h1>
+        </div>
+
+        <h2 class="format-font" style="text-align: center;">Potwierdzenie adresu email</h2> <hr style="background-color:  #1EBE53; width:100px">
+
+        <div class="format-font" style="margin-top: 20px; line-height: 1.5;">
+            <p style="text-align: center; font-weight: bold;">Gratulacje!</p>
+            Otrzymałeś tą wiadamość w związku z rejestracją na naszym serwisie.
+            Kliknij na link poniżej aby potwierdzić email i aktywować konto.
+        </div>
+
+        <p class="format-font" style="text-align: center; margin-top: 50px;">
+            Potwierdź aktywację swojego konta :
+            <hr style="background-color:  rgb(110, 3, 211); width:50px">
+            <div class="format-font" style="text-align: center; margin-top: 30px;" >
+                <a href="{{link}}" class="my-button" >Aktywuj</a>
+            </div>
+
+        </p>
+
+        <p class="format-font" style="line-height: 1.5; font-size: 12px; margin-top: 50px;">
+            Dołączysz do nas zaraz po weryfikacji ! <br/>
+            Dziękujemy za dołączenie ! <br/>
+            Wiadomość wygenerowana automatycznie. <br/>
+            Nie odpowiadaj na tą wiadomość.
+        </p>
+
+    </div>
+
+</body>
+</html>

@@ -92,6 +92,7 @@ class UserSignUpForm(UserCreationForm):
     def save(self, commit=True):
         result = super().save(commit)
         self.instance.save()
+
         phone_nr = self.cleaned_data["phone_nr"]
         birth_date = self.cleaned_data["birth_date"]
         country = self.cleaned_data["country"]

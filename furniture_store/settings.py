@@ -14,8 +14,6 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -139,7 +137,10 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+# LOGIN_URL = 'registration/login.html'
 VERIFICATION_SUCCESS_TEMPLATE = None
+SUBJECT = 'Weryfikacja adresu email'
+HTML_MESSAGE_TEMPLATE = "registration/my_custom_verification_msg.html"
 
 THOUSAND_SEPARATOR = ' '
 USE_THOUSAND_SEPARATOR = True
