@@ -137,7 +137,9 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
-# LOGIN_URL = 'registration/login.html'
+
+#verify_email settings:
+# LOGIN_URL = 'login'
 VERIFICATION_SUCCESS_TEMPLATE = None
 SUBJECT = 'Weryfikacja adresu email'
 HTML_MESSAGE_TEMPLATE = "registration/my_custom_verification_msg.html"

@@ -1,5 +1,5 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
 from django.contrib.auth.views import (
     PasswordChangeView,
@@ -32,9 +32,8 @@ class UserCreateView(CreateView):
 
     def form_valid(self, form):
         if form.is_valid():
-            inactive_user = send_verification_email(self.request, form)
-            return inactive_user
-
+            send_verification_email(self.request, form)
+            return redirect(to='confirm_registration')
 
 
 class SubmittablePasswordChangeView(PasswordChangeView):
@@ -123,3 +122,7 @@ class CustomerDeleteView(LoginRequiredMixin, DeleteView):
 class CustomerDeleteDoneView(View):
     def get(self, request):
         return render(request, template_name="customer_delete_done.html")
+
+class EmailVerificationSentView(View):
+    def get(self, request):
+        return render(request, template_name="registration/email_verification_sent.html")

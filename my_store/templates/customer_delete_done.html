@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
 {% block alerts %}
-<div class="alert alert-warning text-center" role="alert">
+<div class="alert alert-warning alert-dismissible text-center" role="alert">
   <h5>Konto zostało usunięte.</h5>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 {% endblock %}
 {% block content %}

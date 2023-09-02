@@ -20,6 +20,7 @@ class UserSignUpForm(UserCreationForm):
         model = User
         fields = ["email", "username"]
 
+
     def clean_email(self):
         email = self.cleaned_data.get('email')
         if User.objects.filter(email=email).exists():
@@ -91,8 +92,8 @@ class UserSignUpForm(UserCreationForm):
 
     def save(self, commit=True):
         result = super().save(commit)
-        self.instance.save()
 
+        self.instance.save()
         phone_nr = self.cleaned_data["phone_nr"]
         birth_date = self.cleaned_data["birth_date"]
         country = self.cleaned_data["country"]

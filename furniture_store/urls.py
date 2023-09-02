@@ -25,6 +25,7 @@ urlpatterns = [
     path("accounts/login/", views.SubmittableLoginView.as_view(), name="login"),
     path("accounts/logout/", views.SubmittableLogoutView.as_view(), name="logout"),
     path("accounts/registration", views.UserCreateView.as_view(), name="registration"),
+    path("accounts/confirm_registration", views.EmailVerificationSentView.as_view(), name='confirm_registration'),
     path("accounts/password_reset", views.SubmittablePasswordResetView.as_view(), name="password_reset"),
     path("accounts/password_reset_confirm/<uidb64>/<token>/", views.SubmittablePasswordResetConfirmView.as_view(), name="password_reset_confirm"),
     path("accounts/password_reset_done", views.SubmittablePasswordResetDoneView.as_view(), name="password_reset_done"),
