@@ -15,9 +15,7 @@ import os
 from dotenv import load_dotenv
 
 # dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
-for item in os.environ:
-    print(item)
-
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-load_dotenv()
 
-SECRET_KEY = str(os.getenv('SECRET_KEY'))
+
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -42,10 +40,8 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('PASSWORD_USER')
 PASSWORD_RESET_TIMEOUT_DAYS = 1
-DEFAULT_FROM_EMAIL = f'noreply <{EMAIL_HOST_USER}>'
-print('Email:', EMAIL_HOST_USER)
-print('Password:', EMAIL_HOST_PASSWORD)
-print(SECRET_KEY)
+# DEFAULT_FROM_EMAIL = f'noreply <{EMAIL_HOST_USER}>'
+
 
 # Application definition
 INSTALLED_APPS = [
@@ -58,7 +54,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "widget_tweaks",
     "verify_email.apps.VerifyEmailConfig",
-    "dotenv",
 
 ]
 

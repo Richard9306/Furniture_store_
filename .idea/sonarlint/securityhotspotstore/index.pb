@@ -945,8 +945,6 @@ w
 G.idea/sonarlint/issuestore/e/0/e0ea567491def8c213c24ffd2ba0e030e7863522,d\5\d5b4cae53bbff8a073e3923a18f92d95b1808474
 w
 G.idea/sonarlint/issuestore/e/0/e004f44ba34cf9a2633cbdd1a7ab9d6e1bfa076f,c\f\cff0cbf774cf5963651be434462e7dece40f656f
-o
-?my_store/templates/registration/my_custom_verification_msg.html,a\e\aec5550ecd724ad5f6a2bc0fda617fbbec79429e
 Å
 Q.idea/sonarlint/securityhotspotstore/b/6/b6a5fd9555d79e2ac6dc1b938c5311d7b3243de7,4\9\498fe0b425f3afc1313ba68c4eb8046595142e5a
 w

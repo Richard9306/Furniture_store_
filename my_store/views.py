@@ -50,8 +50,9 @@ class SubmittablePasswordResetView(PasswordResetView):
     form_class = forms.SubmittablePasswordResetForm
     template_name = "registration/password_reset.html"
     success_url = reverse_lazy("password_reset_done")
-    subject_template_name = "registration/password_reset_subject.txt"
-    email_template_name = "registration/password_reset_email.html"
+    # subject_template_name = "registration/password_reset_subject.txt"
+    html_email_template_name = "registration/password_reset_email.html"
+
 
 
 class SubmittablePasswordResetDoneView(PasswordResetDoneView):
