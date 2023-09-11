@@ -18,20 +18,20 @@
     <header class="mb-3">
       <nav class="navbar p-2 navbar-expand-lg">
         <a class="navbar-brand mx-auto mx-lg-2 " href="{% url 'home' %}" ><img class=" d-inline-block align-bottom" src="{% static 'my_store/img/stolik.png' %}" alt="logo"><span>Solidne<b>Meble</b>.pl</span> </a>
-        <form class="form-inline  d-flex mx-auto  w-50 ">
+        <form class="form-inline  d-flex mx-auto col-12 col-md-6">
           <div class="input-group input-group-lg ">
-            <input type="search" class="form-control" id="searchInput" placeholder="Wyszukaj ... " aria-label="wyszukiwarka" aria-describedby="searchbtn">
+            <input type="search" class="form-control " id="searchInput" placeholder="Wyszukaj ... " aria-label="wyszukiwarka" aria-describedby="searchbtn">
             <button class="btn btn-outline-success" type="button" id="searchbtn"><img src="{% static 'my_store/img/search.png' %}" alt="searchicon"></button>
           </div>
         </form>
-        <ul class="navbar-nav flex-row ms-auto">
-          <li class="nav-item me-3 ">
+        <ul class="navbar-nav flex-row mx-auto">
+          <li class="nav-item me-2 ">
             <a class="nav-link" href="#"><img src="{% static 'my_store/img/cart.png' %}" alt="koszyk"></a>
           </li>
-          <li class="nav-item me-3 mb-2 ">
+          <li class="nav-item  me-2 mb-2 ">
             <a class="nav-link" href="#"><img src="{% static 'my_store/img/heart.png' %}" alt="ulubione"></a>
           </li>
-          <li class="nav-item dropdown me-3 mb-2 ">
+          <li class="nav-item dropdown mb-2 ">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true"
             id="usermenu" href="#"><img src="{% static 'my_store/img/user.png' %}" alt="użytkownik"></a>
             <div class="dropdown-menu dropdown-menu-end"  aria-labelledby="usermenu">
@@ -47,12 +47,7 @@
                 {{ user.email }}
               </p>
               <div class="dropdown-divider"></div>
-              {% if not user.is_superuser %}
-              <a class="dropdown-item" href="{% url 'customer_update' pk=user.customers.id %}">Twoje dane kontaktowe</a>
-              {% endif %}
-              <a class="dropdown-item " href="{% url 'password_change' %}">Zmień hasło</a>
-              <a class="dropdown-item " href="{% url 'customer_delete' pk=user.customers.id %}">Usuń konto</a>
-              <div class="dropdown-divider"></div>
+
               <a class="dropdown-item " href="{% url 'logout' %}">Wyloguj</a>
               {% else %}
               <a class="dropdown-item " href="{% url 'login' %}">Zaloguj się</a>
@@ -141,7 +136,7 @@
       <div class="container-fluid bg-dark text-light py-4 mt-5">
         <div class="row">
           <div class="col-md-4 my-auto ps-md-5">
-            <p>Copyright&copy; 2023</p>
+            <p>Copyright<sup>&copy;</sup> 2023</p>
           </div>
           <div class="col-md-4 my-auto">
             <p>Ryszard Najewski - Entry Python Django Developer</p>
@@ -153,7 +148,6 @@
               <a href="http://github.com/Richard9306" target="_blank"><img class=" mx-2" src="{% static 'my_store/img/github.png' %}" alt="github"></a>
               <a href="mailto:ryszard.najewski@gmail.com" target="_blank"><img class=" mx-2" src="{% static 'my_store/img/gmail.png' %}" alt="gmail"></a>
             </div>
-
 
           </div>
         </div>

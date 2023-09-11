@@ -15,13 +15,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from my_store import views
 
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", views.HomeView.as_view(), name="home"),
+    path("home", views.HomeView.as_view(), name="home"),
     path("accounts/login/", views.SubmittableLoginView.as_view(), name="login"),
     path("accounts/logout/", views.SubmittableLogoutView.as_view(), name="logout"),
     path("accounts/registration", views.UserCreateView.as_view(), name="registration"),
@@ -37,5 +37,6 @@ urlpatterns = [
     path("customers/delete/<pk>", views.CustomerDeleteView.as_view(), name="customer_delete"),
     path("customers/delete_done", views.CustomerDeleteDoneView.as_view(), name="customer_delete_done"),
     path('verification/', include('verify_email.urls')),
+    re_path(r'^oauth/', include('social_django.urls', namespace='social')),
 
 ]
