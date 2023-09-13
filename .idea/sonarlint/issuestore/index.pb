@@ -3048,8 +3048,6 @@ D
 furniture_store/.env,c\1\c156bba3d8a1d6607799d9e4eb0c18e7f9847388
 @
 requirements.txt,1\9\19359a61ae2446b51b549167b014da2fcf265768
-A
-my_store/views.py,7\0\7025b7bf4973d72c77d4d4b0c3411f49f897d984
 i
 9my_store/templates/registration/password_reset_email.html,3\2\324bd223adeab7bda1c77f37c7c008ca0feed30d
 i
@@ -3059,8 +3057,6 @@ o
 l
 <my_store/templates/registration/email_verification_sent.html,d\c\dcc072c0c66d518d9f95194b3a07c13ddd15cf1b
 \
-,my_store/templates/customer_delete_done.html,b\9\b92b6244e6494ed6b098f30693f55fcc2b77d2ff
-\
 ,my_store/templates/customer_update_done.html,e\3\e3add926b4fed7c1f1f93f0aeff8d5e1e4e98992
 M
 my_store/templates/index.html,c\7\c77fbd7a94da368ca4824011db9908a4ed3491ed
@@ -3069,3 +3065,19 @@ $my_store/templates/main_content.html,a\f\aff802e946375edef5b494f7735ba70bdf5c2
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
+W
+'my_store/templates/customer_update.html,5\1\51b365bd53d6f45f6bf7383f7b525784de942686
+k
+;my_store/templates/registration/password_reset_confirm.html,0\2\0234b361a6049767eec149456b939c072bdb0425
+c
+3my_store/templates/registration/password_reset.html,2\7\270b66325913eb2327d172f455d8daa77f0f1e31
+W
+'my_store/templates/customer_delete.html,d\2\d2130da9a52f6b1545b5b6aaf837531348fa1fdb
+[
++my_store/templates/registration/signup.html,1\6\1660eced9beb806856686a6b4e4a5dba834ed7d3
+d
+4my_store/templates/registration/password_change.html,a\c\ac2a7e9444018b37d32576d878b0d05216ee1bb6
+l
+<my_store/templates/registration/password_reset_complete.html,3\a\3a1458adf78214eed1c2bef1ff11e4ecbebe0929
+h
+8my_store/templates/registration/password_reset_done.html,5\9\593fc6bf4b17eca857d7995cae2efe89fbc829d1

@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% block alerts %}
-<div class="alert alert-success text-center" role="alert">
-  Wylogowałeś się poprawnie.
+<div class="alert alert-success text-center alert-dismissible" role="alert">
+  <h5>Wylogowałeś się poprawnie.</h5>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
+{% endblock %}
+{% block content %}
+{% include "main_content.html" %}
 {% endblock %}
