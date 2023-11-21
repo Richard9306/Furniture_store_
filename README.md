@@ -43,7 +43,7 @@ Project is:  _in progress_
 ## To do:
 - Add CRUD for Orders
 - Add searching
-- Add fitering
+- Add filtering
 - Add email subscriptions
 
 ## Acknowledgements
