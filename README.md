@@ -38,7 +38,7 @@ The project is created as part of training and expanding knowledge about Django 
 Project requirements/dependencies are listed in the [requirements.txt](requirements.txt) file.
 
 ## Project Status
-Project is:  _in progress_
+Project is:  _on hold_
 
 ## To do:
 - Add CRUD for Orders
