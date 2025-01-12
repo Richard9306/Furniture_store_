@@ -40,11 +40,6 @@ Project requirements/dependencies are listed in the [requirements.txt](requireme
 ## Project Status
 Project is:  _on hold_
 
-## To do:
-- Add CRUD for Orders
-- Add searching
-- Add filtering
-- Add email subscriptions
 
 ## Acknowledgements
 - This project was inspired among others by [meble.pl](https://www.meble.pl/)
