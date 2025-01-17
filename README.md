@@ -8,7 +8,6 @@ The project is created as part of training and expanding knowledge about Django 
 * [Screenshots](#screenshots)
 * [Setup](#setup)
 * [Project Status](#project-status)
-* [Room for Improvement](#room-for-improvement)
 * [Acknowledgements](#acknowledgements)
 * [Contact](#contact)
 
@@ -35,7 +34,49 @@ The project is created as part of training and expanding knowledge about Django 
 
 
 ## Setup
-Project requirements/dependencies are listed in the [requirements.txt](requirements.txt) file.
+
+Clone repository:
+```
+git clone https://github.com/Richard9306/Furniture_store_
+```
+Navigate to Furniture_store_ folder by command:
+```
+cd Furniture_store_
+```
+Install libraries:
+```
+pip install -r requirements.txt
+```
+Create admin account to access admin site:
+
+```
+# linux/mac
+# to apply db changes
+./manage.py migrate 
+./manage.py createsuperuser
+
+# windows
+# to apply db changes
+python manage.py migrate
+python manage.py createsuperuser
+```
+
+
+Run project:
+```
+# linux/mac
+# to apply db changes
+./manage.py migrate 
+# to start project
+./manage.py runserver
+
+# windows
+# to apply db changes
+python manage.py migrate
+# to start project
+python manage.py runserver
+```
+
 
 ## Project Status
 Project is:  _on hold_
